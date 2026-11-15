@@ -688,3 +688,14 @@ html.js .hero .hero-visual.rv.in{transform:none}
 .dl-soon{margin:8px auto 0;max-width:560px;font-size:18px;font-weight:500;color:var(--g300);text-align:center}
 html:not(.indirme-acik) #dlForm,html:not(.indirme-acik) .wait,html:not(.indirme-acik) #dlSub{display:none}
 html.indirme-acik .dl-soon{display:none}
+
+/* ---------- KT-532: lig kapısı (indirme bölümü) ---------- */
+.dl-lig{max-width:560px;margin:22px auto 0;text-align:left;display:grid;gap:14px}
+.dl-lig select,.dl-lig input[type=text]{width:100%;min-height:54px;padding:0 16px;border-radius:12px;background:rgba(0,0,0,.35);border:1px solid var(--line-2);color:var(--tx);font-size:16px}
+.dl-lig select{color-scheme:dark}
+.dl-lig select:focus-visible,.dl-lig input:focus-visible{outline:2px solid var(--fos);outline-offset:2px}
+.dl-lig [aria-invalid=true]{border-color:#f87171;outline-color:#f87171}
+.dl-lig .dl-msg{margin-top:0}
+.dl-msg.note{color:var(--tx-2)}
+.dl-set{border:0;margin:0;padding:0;min-width:0}
+.dl-set:disabled{opacity:.45}

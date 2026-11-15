@@ -20,7 +20,7 @@
     // klip animasyonu (KT-518)
     'js.yes': 'Yes', 'js.no': 'No', 'js.qShot': 'Shot?', 'js.qTurn': 'Turnover?',
     'js.aria.goal': 'Animated demo scene: a pass, a shot, and the puck goes into the net; the goal light comes on.',
-    'js.aria.pp': 'Animated demo scene: a player goes to the penalty box, the teams line up 5 on 4 and the puck is passed around.',
+    'js.aria.pp': 'Animated demo scene: one player sits in the penalty box, the teams line up 5 on 4 and the puck is passed around.',
     'js.aria.faceoff': 'Animated demo scene: the puck is dropped at the faceoff dot and the players spread out.',
     'js.aria.entry': 'Animated demo scene: the puck carrier crosses the blue line into the offensive zone.',
     'js.aria.exit': 'Animated demo scene: the puck leaves the defensive zone over the blue line.',
@@ -30,6 +30,10 @@
     'dl.soon': 'Downloads open very soon.', 'dl.sending': 'Sending…', 'dl.ok': 'We have sent the download link to your e-mail.',
     'dl.errMail': 'Please enter a valid e-mail address.', 'dl.errRiza': 'Please tick the consent box to receive the link.',
     'dl.errBad': 'We could not accept this request. Check your e-mail address and the consent box.',
+    // lig kapısı (KT-532)
+    'dl.lig.ph': 'Select your league', 'dl.lig.none': 'My league is not listed', 'dl.lig.ok': 'We work with this league.',
+    'dl.lig.yok': "We can't serve this league yet. HockeyCut works with the league's official game sheet; more leagues are being added.",
+    'dl.lig.sec': 'Please choose your league first.', 'dl.errLigSec': 'Please choose your league first.', 'dl.errTakim': 'Please enter your team name (at least 2 characters).',
     'dl.errMany': 'Too many requests. Please try again in a little while.', 'dl.errNet': 'We could not reach the server. Please try again later.'
   };
   var dict = {};

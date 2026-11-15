@@ -270,7 +270,7 @@
       <li class="lg-row" data-lg="lt"><h3 class="lg-ulke" data-i18n="lg.c.lt">Lithuania</h3><ul class="lg-chips"><li class="lg-chip">1 lyga</li><li class="lg-chip">Moterų čempionatas</li><li class="lg-chip">Jaunimo lyga</li><li class="lg-chip" data-i18n="lg.g.youth">+ youth leagues</li></ul></li>
       <li class="lg-row" data-lg="us"><h3 class="lg-ulke" data-i18n="lg.c.us">United States</h3><ul class="lg-chips"><li class="lg-chip">NCAA Division I</li><li class="lg-chip">NCAA Division III</li></ul></li>
     </ul>
-    <p class="lg-note" data-i18n="lg.note">If your league is not listed, goals are read from the scoreboard; more leagues are being added.</p>
+    <p class="lg-note" data-i18n="lg.note">If your league is not listed, we cannot serve it yet; more leagues are being added.</p>
     <p class="lg-aff" data-i18n="lg.g.aff">League names belong to their owners; HockeyCut is not affiliated with these leagues.</p>
   </div>
 </section>
@@ -549,10 +549,23 @@
     <div class="end glass">
       <div class="end-glow" aria-hidden="true"></div>
       <h2 id="end-title"><span data-i18n="end.title1">Your next game,</span> <span data-i18n="end.title2">already cut into clips.</span></h2>
+      <!-- KT-532: lig kapısı. Seçenekler #lgRows satırlarından js/lig.js ile üretilir (ikinci liste YOK). Seçim: listedeki lig → akış sürer; "listede yok" → form ve Premium/İndir kilitli. Kapalı kipte de görünür. -->
+      <div class="dl-lig" id="dlLigBox">
+        <div class="dl-field">
+          <label class="dl-lbl" for="dlLig" data-i18n="dl.lig.q">Which league's games will you analyse?</label>
+          <select id="dlLig" name="lig" aria-describedby="dlLigMsg"><option value="" data-i18n="dl.lig.ph">Select your league</option></select>
+        </div>
+        <div class="dl-field">
+          <label class="dl-lbl" for="dlTakim" data-i18n="dl.takim">Your team</label>
+          <input id="dlTakim" name="takim" type="text" maxlength="80" autocomplete="organization" required data-i18n-ph="dl.takim.ph" placeholder="Team name" aria-describedby="dlLigMsg">
+        </div>
+        <p class="dl-msg" id="dlLigMsg" role="status" aria-live="polite"></p>
+      </div>
       <p class="sub" id="dlSub" data-i18n="end.sub">Enter your e-mail and we send you the download link for the Mac app.</p>
       <!-- İndirme kapalıyken (js/ayar.js INDIRME_ACIK=false) form ve bekleme listesi kaldırılır, bu satır görünür -->
       <p class="dl-soon" id="dlSoon" data-i18n="dl.soon">Downloads open very soon.</p>
       <form class="dl" id="dlForm" novalidate>
+       <fieldset class="dl-set" id="dlSet" disabled>
         <div class="dl-field">
           <label class="dl-lbl" for="dlEmail" data-i18n="dl.email">Your e-mail</label>
           <input id="dlEmail" name="eposta" type="email" inputmode="email" autocomplete="email" required maxlength="254" placeholder="name@club.com" aria-describedby="dlMsg">
@@ -564,6 +577,7 @@
         <button class="btn btn-primary btn-lg" type="submit" id="dlBtn"><span data-i18n="dl.btn">Send me the link</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
         <p class="dl-msg" id="dlMsg" role="status" aria-live="polite"></p>
         <p class="dl-note" data-i18n="dl.note">The link works for 72 hours. Mac only for now: Apple Silicon (M1 or newer).</p>
+       </fieldset>
       </form>
       <div class="wait" aria-labelledby="wait-title">
         <h3 id="wait-title" data-i18n="end.waitT">On Windows? Join the waitlist.</h3>
@@ -602,6 +616,7 @@
 <script src="js/ayar.js"></script>
 <script src="js/i18n.js"></script>
 <script src="js/main.js" defer></script>
+<script src="js/lig.js" defer></script>
 <script src="js/indir.js" defer></script>
 <script src="js/hero.js" defer></script>
 <script src="js/klip-anim.js" defer></script>

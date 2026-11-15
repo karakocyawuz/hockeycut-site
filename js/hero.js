@@ -11,17 +11,22 @@
   var T = function (k, v) { return w.HA_I18N ? w.HA_I18N.t(k, v) : k; };
   var reduce = w.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var LOOP = 21, TG = 14.6, RH = 330; // döngü sn · gol anı · pist 600×300 + altta 30 birim yedek şeridi
+  var GX = 566, GY = 148; // golde pakın durduğu yer: kale çizgisinin (x = 560) ardı, direklerin arası (filenin içi)
 
-  /* ---- Oyuncu anahtar kareleri [zaman, x, y]. Ev sahibi (kemik) sağa hücum eder, deplasman (pembe) sola. Kaleler x≈40 ve x≈560 ---- */
+  /* ---- Oyuncu anahtar kareleri [zaman, x, y]. Ev sahibi (kemik) sağa hücum eder, deplasman (pembe) sola. Kaleler x≈40 ve x≈560 ----
+     HOKEY KURALLARI (senaryoyu değiştirirken uy; e2e-v2.mjs "kural" denetimleri ölçer):
+     - Faceoff (0–2 sn, nokta 100,80): santrlar noktada kendi tarafında; diğer oyuncular dairenin (yarıçap 45) dışında, kendi tarafında.
+     - Ofsayt: pak mavi çizgiyi (x 367–373) tümüyle geçmeden ev sahibi oyuncusu hücum bölgesine (x > 373) giremez; önce pakı taşıyan girer.
+     - Gol: pak kale çizgisini (x = 560) tümüyle geçip direklerin arasında fileye girer (GX). */
   var K = {
     hC:  [[0, 92, 80], [2, 92, 80], [2.5, 100, 86], [3.5, 130, 110], [5, 190, 140], [7, 270, 130], [8, 300, 112], [10, 376, 92], [11.2, 430, 120], [12.4, 470, 140], [14, 500, 150], [21, 510, 150]],
-    hL:  [[0, 95, 45], [2, 95, 45], [3.5, 120, 40], [5.5, 185, 45], [8, 275, 60], [10, 370, 50], [11.5, 430, 62], [13, 475, 100], [13.9, 486, 146], [15.5, 495, 150], [21, 495, 150]],
-    hR:  [[0, 100, 118], [2, 100, 118], [4, 140, 150], [6, 215, 175], [8, 290, 205], [10, 370, 205], [11.4, 435, 195], [13, 470, 192], [13.7, 478, 185], [15.5, 495, 170], [21, 495, 170]],
-    hD1: [[0, 70, 105], [2, 70, 105], [2.5, 64, 122], [3.3, 75, 150], [4.5, 130, 205], [5.6, 200, 215], [6.2, 229, 205], [7.2, 262, 190], [8, 285, 170], [9, 330, 180], [12, 380, 190], [15.5, 395, 190], [21, 395, 190]],
+    hL:  [[0, 88, 32], [2, 88, 32], [3.5, 120, 40], [5.5, 185, 45], [8, 265, 60], [10, 345, 50], [11.5, 430, 62], [13, 475, 100], [13.9, 486, 146], [15.5, 495, 150], [21, 495, 150]],
+    hR:  [[0, 88, 128], [2, 88, 128], [4, 140, 150], [6, 215, 175], [8, 280, 205], [10, 345, 205], [11.4, 435, 195], [13, 470, 192], [13.7, 478, 185], [15.5, 495, 170], [21, 495, 170]],
+    hD1: [[0, 58, 118], [2, 58, 118], [2.5, 60, 128], [3.3, 75, 150], [4.5, 130, 205], [5.6, 200, 215], [6.2, 229, 205], [7.2, 262, 190], [8, 285, 170], [9, 330, 180], [12, 380, 190], [15.5, 395, 190], [21, 395, 190]],
     hD2: [[0, 70, 195], [2, 70, 195], [3, 95, 200], [5, 150, 150], [7, 215, 120], [9, 290, 100], [11, 360, 105], [13, 400, 95], [15.5, 410, 100], [21, 410, 100]],
     aC:  [[0, 108, 80], [2, 108, 80], [2.6, 100, 95], [3.5, 120, 130], [4.5, 150, 150], [6.5, 230, 140], [8.5, 330, 140], [10, 400, 150], [11.5, 440, 150], [13, 470, 150], [15.5, 480, 150], [21, 480, 150]],
-    aW1: [[0, 112, 50], [2, 112, 50], [3.5, 150, 60], [5.5, 215, 90], [8, 320, 70], [10.5, 420, 60], [12.5, 480, 70], [15.5, 505, 85], [21, 505, 85]],
-    aW2: [[0, 115, 112], [2, 115, 112], [3.5, 125, 160], [5.5, 190, 190], [7.5, 260, 230], [9.5, 340, 235], [11.5, 420, 225], [13.5, 495, 195], [15.5, 505, 200], [21, 505, 200]],
+    aW1: [[0, 112, 32], [2, 112, 32], [3.5, 150, 60], [5.5, 215, 90], [8, 320, 70], [10.5, 420, 60], [12.5, 480, 70], [15.5, 505, 85], [21, 505, 85]],
+    aW2: [[0, 112, 128], [2, 112, 128], [3.5, 125, 160], [5.5, 190, 190], [7.5, 260, 230], [9.5, 340, 235], [11.5, 420, 225], [13.5, 495, 195], [15.5, 505, 200], [21, 505, 200]],
     aD1: [[0, 160, 70], [2, 160, 70], [4, 240, 100], [7, 360, 100], [10, 430, 95], [13, 470, 100], [15.5, 500, 110], [21, 500, 110]],
     aD2: [[0, 160, 115], [2, 160, 115], [4, 250, 145], [7, 380, 155], [10, 455, 170], [13, 490, 165], [15.5, 520, 170], [21, 520, 170]],
     ref: [[0, 98, 58], [2, 98, 58], [3.5, 150, 26], [6, 250, 22], [21, 250, 22]]
@@ -55,7 +60,7 @@
 
   /* ---- Pak: tut / taşı / pas / şut ---- */
   var PK = [[0, 2.0, 'hold', 100, 80], [2.0, 2.5, 'pass', 'hD1'], [2.5, 7.3, 'carry', 'hD1'], [7.3, 7.9, 'pass', 'hC'], [7.9, 11.2, 'carry', 'hC'], [11.2, 11.8, 'pass', 'hR'],
-    [11.8, 13.6, 'carry', 'hR'], [13.6, 14.1, 'pass', 'hL'], [14.1, TG, 'shot', 559, 148], [TG, LOOP, 'hold', 559, 148]];
+    [11.8, 13.6, 'carry', 'hR'], [13.6, 14.1, 'pass', 'hL'], [14.1, TG, 'shot', GX, GY], [TG, LOOP, 'hold', GX, GY]];
   function segEnd(s) { return s[2] === 'carry' ? front(s[3], s[1]) : typeof s[3] === 'string' ? front(s[3], s[1]) : [s[3], s[4]]; }
   PK.forEach(function (s, j) { var p = PK[j - 1]; s.start = p ? segEnd(p) : [s[3], s[4]]; });
   function puckAt(t) {
@@ -78,7 +83,7 @@
     { t: 6.2, ty: 'exit', k: 'js.exit', dk: 'js.home', x: 229, y: 205 },
     { t: 10.0, ty: 'entry', k: 'js.entry', dk: 'js.home', x: 374, y: 92 },
     { t: 14.1, ty: 'shot', k: 'js.shotc', dk: 'js.home', x: 486, y: 146, sog: 1, cand: 1 }, // şut = ADAY (Evet/Hayır ile onaylanır)
-    { t: TG, ty: 'goal', k: 'js.goal', dk: 'js.home', x: 559, y: 148, mark: 'goal', mx: 486, my: 146, goal: 1 }
+    { t: TG, ty: 'goal', k: 'js.goal', dk: 'js.home', x: GX, y: GY, mark: 'goal', mx: 486, my: 146, goal: 1 }
   ];
   var MAX = { events: 6, goals: 2, sog: 3, fo: 3 };
   function gameSec(t) { return 490 + t * 4; } // P2 08:10'dan başlar; 21 sn'de ~1,5 oyun dakikası
@@ -118,8 +123,8 @@
     if (t >= TG && t < TG + 3) {
       var e = (t - TG) / 3, on = Math.floor((t - TG) * 4) % 2 === 0;
       ctx.save(); ctx.globalAlpha *= on ? 1 : 0.45; ctx.drawImage(GLOW.r, 560, 126, 48, 48); dot(584, 150, 4, '#f87171'); ctx.restore();
-      for (var r = 0; r < 3; r++) { var q = Math.min(1, Math.max(0, e * 1.5 - r * 0.15)); if (!q) continue; ctx.save(); ctx.globalAlpha *= (1 - q) * 0.9; dot(559, 148, 10 + q * 120, null, FOS, 2.4 - r * 0.6); ctx.restore(); }
-      ctx.save(); ctx.globalAlpha *= 1 - e; ctx.drawImage(GLOW.f, 559 - 60, 148 - 60, 120, 120); ctx.restore();
+      for (var r = 0; r < 3; r++) { var q = Math.min(1, Math.max(0, e * 1.5 - r * 0.15)); if (!q) continue; ctx.save(); ctx.globalAlpha *= (1 - q) * 0.9; dot(GX, GY, 10 + q * 120, null, FOS, 2.4 - r * 0.6); ctx.restore(); }
+      ctx.save(); ctx.globalAlpha *= 1 - e; ctx.drawImage(GLOW.f, GX - 60, GY - 60, 120, 120); ctx.restore();
     }
     // kaleciler (pakın yüksekliğini izler)
     var gy = pk ? Math.min(162, Math.max(138, 150 + (pk[1] - 150) * 0.22)) : 150;
@@ -201,5 +206,7 @@
   if ('IntersectionObserver' in w) new IntersectionObserver(function (es) { visible = es[0].isIntersecting; if (visible) { start(); run(); } }, { threshold: 0.05 }).observe(panel);
   else { visible = true; start(); }
   d.addEventListener('visibilitychange', run);
+  // konum(sn): o andaki oyuncu ve pak konumları (pist birimi) — e2e hokey kuralı denetimleri (faceoff, ofsayt, gol) bunu örnekler
+  w.HA_HERO = { konum: function (tt) { return { h: HOME.map(function (id) { return pos(id, tt); }), a: AWAY.map(function (id) { return pos(id, tt); }), pak: puckAt(tt), taraf: 'h' }; }, sure: LOOP, golAni: TG, faceoffBitis: 2.0 };
   d.addEventListener('i18n:ready', function () { if (started) { resetUI(); nextEv = 0; t = 0; if (reduce) { EV.forEach(function (e) { fire(e, false); }); still(); } } });
 })();
