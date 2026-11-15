@@ -1,0 +1,612 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; font-src 'self'; connect-src 'self'; base-uri 'self'; form-action 'self'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>HockeyCut — AI game breakdown for ice hockey, on your Mac</title>
+<meta name="description" content="Add the recorded game: HockeyCut analyzes it on your Mac and lists goals, power plays and penalty kills, faceoffs, zone entries and D-zone exits as clips. Shots and turnovers come as candidates you confirm with Yes or No. The analysis runs on your Mac. Mac first, Windows waitlist.">
+<meta name="theme-color" content="#07090a">
+<meta property="og:title" content="HockeyCut — Stop cutting games by hand.">
+<meta property="og:description" content="HockeyCut lists the events of your recorded hockey game as clips. Shots and turnovers come as candidates you confirm. Runs on your Mac.">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://hockeycut.com/">
+<meta property="og:url" content="https://hockeycut.com/">
+<link rel="alternate" hreflang="en" href="https://hockeycut.com/">
+<link rel="alternate" hreflang="tr" href="https://hockeycut.com/?lang=tr">
+<link rel="alternate" hreflang="de" href="https://hockeycut.com/?lang=de">
+<link rel="alternate" hreflang="ru" href="https://hockeycut.com/?lang=ru">
+<link rel="alternate" hreflang="es" href="https://hockeycut.com/?lang=es">
+<link rel="alternate" hreflang="fr" href="https://hockeycut.com/?lang=fr">
+<link rel="alternate" hreflang="it" href="https://hockeycut.com/?lang=it">
+<link rel="alternate" hreflang="nl" href="https://hockeycut.com/?lang=nl">
+<link rel="alternate" hreflang="cs" href="https://hockeycut.com/?lang=cs">
+<link rel="alternate" hreflang="sk" href="https://hockeycut.com/?lang=sk">
+<link rel="alternate" hreflang="sl" href="https://hockeycut.com/?lang=sl">
+<link rel="alternate" hreflang="hr" href="https://hockeycut.com/?lang=hr">
+<link rel="alternate" hreflang="bg" href="https://hockeycut.com/?lang=bg">
+<link rel="alternate" hreflang="zh" href="https://hockeycut.com/?lang=zh">
+<link rel="alternate" hreflang="ko" href="https://hockeycut.com/?lang=ko">
+<link rel="alternate" hreflang="ja" href="https://hockeycut.com/?lang=ja">
+<link rel="alternate" hreflang="x-default" href="https://hockeycut.com/">
+<link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/fonts.css">
+<link rel="stylesheet" href="css/site.css">
+<link rel="stylesheet" href="css/hareket.css">
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-arrow" viewBox="0 0 20 20"><path d="M4 10h11m-4-4 4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-check" viewBox="0 0 20 20"><path d="m5 10.5 3.2 3L15 6.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-x" viewBox="0 0 20 20"><path d="m6 6 8 8m0-8-8 8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+  <symbol id="i-dash" viewBox="0 0 20 20"><path d="M6 10h8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 20 20"><g fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="10" cy="10" r="7.25"/><path d="M2.75 10h14.5M10 2.75c2.2 2.3 3 4.7 3 7.25s-.8 4.95-3 7.25c-2.2-2.3-3-4.7-3-7.25s.8-4.95 3-7.25Z"/></g></symbol>
+  <symbol id="i-chev" viewBox="0 0 20 20"><path d="m6 8 4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 20 20"><path d="M3.5 6.5h13M3.5 13.5h13" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+  <symbol id="i-play" viewBox="0 0 20 20"><path d="M7 5.2v9.6a.6.6 0 0 0 .9.5l7.6-4.8a.6.6 0 0 0 0-1L7.9 4.7a.6.6 0 0 0-.9.5Z" fill="currentColor"/></symbol>
+  <symbol id="i-upload" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15v3.5A1.5 1.5 0 0 0 5.5 20h13a1.5 1.5 0 0 0 1.5-1.5V15"/><path d="M12 15V4m-4.5 4.5L12 4l4.5 4.5"/></g></symbol>
+  <symbol id="i-scan" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 8V5.5A1.5 1.5 0 0 1 5.5 4H8m8 0h2.5A1.5 1.5 0 0 1 20 5.5V8m0 8v2.5a1.5 1.5 0 0 1-1.5 1.5H16m-8 0H5.5A1.5 1.5 0 0 1 4 18.5V16"/><circle cx="12" cy="12" r="3"/><path d="M4 12h3m10 0h3"/></g></symbol>
+  <symbol id="i-clips" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="14" rx="2"/><path d="M3.5 9.5h17M8 5v4.5m8-4.5v4.5"/><path d="m10.5 12.5 4 2-4 2z" fill="currentColor"/></g></symbol>
+  <symbol id="i-whistle" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="14" r="5"/><path d="M12.5 10.5 20 6v4l-6 2.5M3 6l2 2m3-5 .5 2.5"/></g></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V4m0 16h16"/><path d="m7.5 15 3.5-4 3 2.5L19 8"/></g></symbol>
+  <symbol id="i-club" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4.5 6v5.5c0 4.4 3.1 8 7.5 9.5 4.4-1.5 7.5-5.1 7.5-9.5V6z"/><path d="m9 12 2 2 4-4"/></g></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="10.5" width="14" height="9.5" rx="2"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5"/></g></symbol>
+  <symbol id="i-ev-shot" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M3 10h7M5 14h6"/><ellipse cx="16.5" cy="12.5" rx="4.5" ry="2.4"/></g></symbol>
+  <symbol id="i-ev-turn" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9h13m-3.5-3.5L17 9l-3.5 3.5M20 15H7m3.5-3.5L7 15l3.5 3.5"/></g></symbol>
+  <symbol id="i-ev-goal" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M4 18V7h16v11M4 7l3 3h10l3-3M8 10v8m4-8v8m4-8v8"/></g></symbol>
+  <symbol id="i-ev-fo" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="7.5"/><circle cx="12" cy="12" r="1.8" fill="currentColor"/></g></symbol>
+  <symbol id="i-ev-pp" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="13.5" r="7"/><path d="M12 10v3.5l2.5 2M9.5 3.5h5"/></g></symbol>
+  <symbol id="i-ev-entry" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M15 4v16" stroke-dasharray="2 2.5"/><path d="M3 12h16m-3.5-3.5L19 12l-3.5 3.5"/></g></symbol>
+  <symbol id="i-ev-exit" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4v16" stroke-dasharray="2 2.5"/><path d="M21 12H5m3.5-3.5L5 12l3.5 3.5"/></g></symbol>
+  <symbol id="i-pen" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l1-4L16 5l3 3L8 19z"/><path d="m14 7 3 3"/></g></symbol>
+  <symbol id="i-sep" viewBox="0 0 1200 40" preserveAspectRatio="xMidYMid slice"><g fill="none" stroke-linecap="round"><path d="M0 20h560M640 20h560" stroke="#f87171" stroke-opacity=".28" stroke-width="2"/><path d="M200 6v28M1000 6v28" stroke="#38bdf8" stroke-opacity=".3" stroke-width="5"/><circle cx="600" cy="20" r="17" stroke="#7dd3fc" stroke-opacity=".4" stroke-width="1.6"/><circle cx="600" cy="20" r="3" fill="#7dd3fc" fill-opacity=".6" stroke="none"/></g></symbol>
+  <symbol id="i-share" viewBox="0 0 20 20"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="14.5" cy="5" r="2"/><circle cx="5.5" cy="10" r="2"/><circle cx="14.5" cy="15" r="2"/><path d="m7.3 9 5.4-3m-5.4 5 5.4 3"/></g></symbol>
+</svg>
+
+<div class="bg" aria-hidden="true"><div class="aurora a1"></div><div class="aurora a2"></div><div class="aurora a3"></div><div class="grid"></div><div class="noise"></div></div>
+
+<a class="skip" href="#main" data-i18n="nav.skip">Skip to content</a>
+
+<header class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="#top" aria-label="HockeyCut — home">
+      <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><defs><linearGradient id="lg-b" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4ade80"/><stop offset=".55" stop-color="#16a34a"/><stop offset="1" stop-color="#15803d"/></linearGradient></defs><rect width="32" height="32" rx="9" fill="url(#lg-b)"/><path d="M12 6.5l6.6 13.6q.9 1.9 2.9 1.9H25" fill="none" stroke="#03140a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><ellipse cx="10.4" cy="22.6" rx="3.7" ry="2.1" fill="#03140a"/><path d="M7 26.6h6" stroke="#b6ff3b" stroke-width="1.4" stroke-linecap="round"/></svg>
+      <span class="brand-name">Hockey<em>Cut</em></span>
+    </a>
+    <nav class="nav-links" id="navLinks" aria-label="Main">
+      <a href="#product" data-i18n="nav.product">Product</a>
+      <a href="#how" data-i18n="nav.how">How it works</a>
+      <a href="#pricing" data-i18n="nav.pricing">Pricing</a>
+      <a href="#leagues" data-i18n="nav.leagues">Leagues</a>
+      <a href="#faq" data-i18n="nav.faq">FAQ</a>
+    </nav>
+    <div class="nav-actions">
+      <div class="lang" id="lang">
+        <button class="lang-btn" type="button" aria-expanded="false" aria-controls="langList" data-i18n-aria="lang.label" aria-label="Language: English">
+          <svg aria-hidden="true"><use href="#i-globe"/></svg><span>EN</span><svg class="chev" aria-hidden="true"><use href="#i-chev"/></svg>
+        </button>
+        <ul class="lang-list glass" id="langList" hidden>
+          <li><a href="?lang=en" lang="en" aria-current="true">English <span class="lc">EN</span></a></li>
+          <li><span class="soon" lang="tr" aria-disabled="true">Türkçe <i data-i18n="lang.soon">soon</i></span></li>
+          <li><span class="soon" lang="de" aria-disabled="true">Deutsch <i data-i18n="lang.soon">soon</i></span></li>
+          <li><span class="soon" lang="ru" aria-disabled="true">Русский <i data-i18n="lang.soon">soon</i></span></li>
+          <li><span class="soon" lang="es" aria-disabled="true">Español <i data-i18n="lang.soon">soon</i></span></li>
+          <li><span class="soon" lang="fr" aria-disabled="true">Français <i data-i18n="lang.soon">soon</i></span></li>
+          <li><span class="soon" lang="it" aria-disabled="true">Italiano <i data-i18n="lang.soon">soon</i></span></li>
+          <li><span class="soon" lang="nl" aria-disabled="true">Nederlands <i data-i18n="lang.soon">soon</i></span></li>
+          <li><span class="soon" lang="cs" aria-disabled="true">Čeština <i data-i18n="lang.soon">soon</i></span></li>
+          <li><span class="soon" lang="sk" aria-disabled="true">Slovenčina <i data-i18n="lang.soon">soon</i></span></li>
+          <li><span class="soon" lang="sl" aria-disabled="true">Slovenščina <i data-i18n="lang.soon">soon</i></span></li>
+          <li><span class="soon" lang="hr" aria-disabled="true">Hrvatski <i data-i18n="lang.soon">soon</i></span></li>
+          <li><span class="soon" lang="bg" aria-disabled="true">Български <i data-i18n="lang.soon">soon</i></span></li>
+          <li><span class="soon" lang="zh" aria-disabled="true">中文 <i data-i18n="lang.soon">soon</i></span></li>
+          <li><span class="soon" lang="ko" aria-disabled="true">한국어 <i data-i18n="lang.soon">soon</i></span></li>
+          <li><span class="soon" lang="ja" aria-disabled="true">日本語 <i data-i18n="lang.soon">soon</i></span></li>
+        </ul>
+      </div>
+      <a class="btn btn-primary btn-sm" href="#download"><span data-i18n="nav.dl">Download</span></a>
+      <button class="nav-toggle" type="button" id="navToggle" aria-expanded="false" aria-controls="navLinks" data-i18n-aria="nav.menu" aria-label="Menu"><svg aria-hidden="true"><use href="#i-menu"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- 1–2 · HERO -->
+<section class="hero" id="top" aria-labelledby="hero-title">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <p class="pill rv"><span class="pill-dot" aria-hidden="true"></span><span data-i18n="hero.eyebrow">Video analysis for ice hockey · runs on your Mac</span></p>
+      <h1 id="hero-title" class="hero-title"><span class="ln" data-i18n="hero.title1">Stop cutting games by hand.</span> <span class="ln" data-i18n="hero.title2">Get the clips cut for you.</span></h1>
+      <p class="lead rv" data-i18n="hero.lead">Add the recorded game. HockeyCut analyzes it on your Mac and lists goals, power plays and penalty kills, faceoffs, zone entries and D-zone exits as short clips. Shots and turnovers come as candidates: you answer Yes or No, and the clip plays by itself.</p>
+      <div class="hero-cta rv">
+        <a class="btn btn-primary btn-lg" href="#download"><span data-i18n="cta.dl">Download for Mac</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        <a class="btn-link" href="#how"><span data-i18n="hero.secondary">See how it works</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      </div>
+      <ul class="hero-meta rv">
+        <li><svg aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="hero.meta1">Free for your first 2 games</span></li>
+        <li><svg aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="hero.meta2">Premium: $10 per month</span></li>
+        <li><svg aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="hero.meta3">The full game stays on your Mac</span></li>
+        <li><svg aria-hidden="true"><use href="#i-check"/></svg><a class="hero-lg" href="#leagues" data-i18n="hero.meta4">SHL, Mestis, National League and more</a></li>
+      </ul>
+    </div>
+
+    <div class="hero-visual rv">
+      <div class="hp glass" id="heroPanel" role="img" data-i18n-aria="panel.aria" aria-label="Animated replay of a finished analysis with demo data: a faceoff, a D-zone exit, a zone entry, a shot candidate and a goal on an ice rink, each shown on a timeline and in an event list.">
+        <div class="hp-top">
+          <span class="hp-dots"><i></i><i></i><i></i></span>
+          <span class="hp-title" data-i18n="panel.title">Game review · analysis complete</span>
+          <span class="chip-demo" data-i18n="panel.demo">Demo data</span>
+        </div>
+        <div class="hp-body">
+          <div class="hp-rail">
+            <span class="on"><svg><use href="#i-clips"/></svg></span>
+            <span><svg><use href="#i-chart"/></svg></span>
+            <span><svg><use href="#i-scan"/></svg></span>
+            <span><svg><use href="#i-share"/></svg></span>
+          </div>
+          <div class="hp-main">
+            <div class="kpis">
+              <div class="kpi"><span class="kpi-l" data-i18n="kpi.events">Events tagged</span><b class="kpi-v" data-kpi="events">0</b><span class="kpi-bar"><i data-kbar="events"></i></span></div>
+              <div class="kpi"><span class="kpi-l" data-i18n="kpi.goals">Goals</span><b class="kpi-v" data-kpi="goals">0</b><span class="kpi-bar"><i data-kbar="goals"></i></span></div>
+              <div class="kpi"><span class="kpi-l" data-i18n="kpi.sog">Shot candidates</span><b class="kpi-v" data-kpi="sog">0</b><span class="kpi-bar"><i data-kbar="sog"></i></span></div>
+              <div class="kpi"><span class="kpi-l" data-i18n="kpi.fo">Faceoffs</span><b class="kpi-v" data-kpi="fo">0</b><span class="kpi-bar"><i data-kbar="fo"></i></span></div>
+            </div>
+            <div class="rink-wrap" id="rinkWrap">
+              <svg class="rink" viewBox="0 0 600 330" preserveAspectRatio="xMidYMid meet"><use href="#rinkArt"/><g class="bench"><rect x="150" y="305" width="110" height="20" rx="5"/><rect x="340" y="305" width="110" height="20" rx="5"/><rect class="pbox" x="281" y="305" width="38" height="20" rx="5"/></g></svg>
+              <canvas id="rinkCanvas"></canvas>
+              <span class="rink-flash" id="rinkFlash"></span>
+            </div>
+            <div class="tag-strip" id="tagStrip" aria-hidden="true"></div>
+            <div class="tl">
+              <div class="tl-row"><span class="tl-p">P2</span><span class="tl-clock" id="tlClock">12:20</span><span class="tl-lbl" data-i18n="panel.timeline">Event timeline</span></div>
+              <div class="tl-track" id="tlTrack"><span class="tl-fill" id="tlFill"></span><span class="tl-head" id="tlHead"></span></div>
+            </div>
+          </div>
+          <div class="hp-feed">
+            <div class="feed-h"><svg aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="panel.feed">Event list</span></div>
+            <ol class="feed" id="feed"></ol>
+          </div>
+        </div>
+      </div>
+      <p class="hp-note" data-i18n="panel.note">Animation drawn by us from sample events. Not real game footage.</p>
+      <div class="hp-glow" aria-hidden="true"></div>
+    </div>
+  </div>
+</section>
+
+<!-- shared rink artwork -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <radialGradient id="iceG" cx="50%" cy="45%" r="70%"><stop offset="0" stop-color="#16201f"/><stop offset=".7" stop-color="#0e1515"/><stop offset="1" stop-color="#0a0f10"/></radialGradient>
+    <clipPath id="rinkClip"><rect x="2" y="2" width="596" height="296" rx="84"/></clipPath>
+    <g id="rinkArt">
+      <rect x="2" y="2" width="596" height="296" rx="84" fill="url(#iceG)"/>
+      <g clip-path="url(#rinkClip)">
+        <rect x="39" y="0" width="2" height="300" fill="#f87171" opacity=".55"/><rect x="559" y="0" width="2" height="300" fill="#f87171" opacity=".55"/>
+        <rect x="227" y="0" width="6" height="300" fill="#38bdf8" opacity=".5"/><rect x="367" y="0" width="6" height="300" fill="#38bdf8" opacity=".5"/>
+        <rect x="297.5" y="0" width="5" height="300" fill="#f87171" opacity=".5"/>
+      </g>
+      <g fill="none" stroke-width="1.6">
+        <circle cx="300" cy="150" r="45" stroke="#7dd3fc" opacity=".45"/>
+        <g stroke="#f87171" opacity=".5"><circle cx="100" cy="80" r="45"/><circle cx="100" cy="220" r="45"/><circle cx="500" cy="80" r="45"/><circle cx="500" cy="220" r="45"/></g>
+      </g>
+      <g fill="#f87171" opacity=".75"><circle cx="100" cy="80" r="4"/><circle cx="100" cy="220" r="4"/><circle cx="500" cy="80" r="4"/><circle cx="500" cy="220" r="4"/><circle cx="250" cy="80" r="3.5"/><circle cx="250" cy="220" r="3.5"/><circle cx="350" cy="80" r="3.5"/><circle cx="350" cy="220" r="3.5"/></g>
+      <circle cx="300" cy="150" r="3" fill="#7dd3fc" opacity=".8"/>
+      <path d="M560 132A18 18 0 0 0 560 168Z M40 132A18 18 0 0 1 40 168Z" fill="#7dd3fc" fill-opacity=".14" stroke="#f87171" stroke-opacity=".55" stroke-width="1.4"/>
+      <path d="M560 141h11v18h-11M40 141H29v18h11" fill="none" stroke="#e5e7eb" stroke-opacity=".6" stroke-width="1.6"/>
+      <rect x="2" y="2" width="596" height="296" rx="84" fill="none" stroke="#ffffff" stroke-opacity=".26" stroke-width="2.5"/>
+    </g>
+  </defs>
+</svg>
+
+<div class="sep" aria-hidden="true"><svg><use href="#i-sep"/></svg></div>
+
+<!-- 4 · HOW IT WORKS -->
+<section class="sec how" id="how" aria-labelledby="how-title">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 id="how-title"><span data-i18n="how.title1">From recorded game to ready clips.</span> <span class="dim" data-i18n="how.title2">Four steps.</span></h2>
+    </div>
+    <div class="steps" id="steps">
+      <svg class="steps-line" id="stepsLine" viewBox="0 0 1000 100" preserveAspectRatio="none" aria-hidden="true">
+        <path class="track" d="M40 50 H 960"/>
+        <path class="draw" id="stepsPath" d="M40 50 H 960" pathLength="1"/>
+      </svg>
+      <ol class="steps-list">
+        <li class="step glass rv">
+          <span class="step-n mono">01</span>
+          <div class="sv sv-up" aria-hidden="true"><div class="up-zone"><svg><use href="#i-upload"/></svg><span class="up-file mono">game_2026-10-11.mp4</span><span class="up-bar"><i></i></span></div></div>
+          <h3 data-i18n="how.s1t">Add the video, squad and game sheet</h3>
+          <p data-i18n="how.s1p">Drag the recorded video into the app on your Mac. Even a 4K video is converted to 1080p. Then add the squad and the official game sheet.</p>
+        </li>
+        <li class="step glass rv">
+          <span class="step-n mono">02</span>
+          <div class="sv sv-an" aria-hidden="true"><svg viewBox="0 0 200 106"><defs><linearGradient id="scanG" x1="0" x2="1"><stop offset="0" stop-color="#39FF88" stop-opacity="0"/><stop offset="1" stop-color="#39FF88" stop-opacity=".55"/></linearGradient></defs><rect class="rk" x="3" y="3" width="194" height="92" rx="26"/><path class="rl" d="M100 3v92"/><path class="bl" d="M72 3v92M128 3v92"/><circle class="rk" cx="100" cy="49" r="13"/><g class="dots"><circle class="d h" cx="52" cy="40" r="3.4"/><circle class="d h" cx="86" cy="64" r="3.4"/><circle class="d h" cx="118" cy="34" r="3.4"/><circle class="d h" cx="146" cy="58" r="3.4"/><circle class="d h" cx="164" cy="42" r="3.4"/><circle class="d a" cx="38" cy="62" r="3.4"/><circle class="d a" cx="74" cy="30" r="3.4"/><circle class="d a" cx="108" cy="70" r="3.4"/><circle class="d a" cx="136" cy="44" r="3.4"/><circle class="d a" cx="156" cy="72" r="3.4"/></g><circle class="pk" cx="118" cy="52" r="2.4"/><rect class="scan" x="0" y="0" width="14" height="98"/></svg><span class="an-bar"><i></i></span></div>
+          <h3 data-i18n="how.s2t">AI analyzes the game</h3>
+          <p data-i18n="how.s2p">The analysis runs on your Mac by itself, so you can do other work meanwhile. One period takes about 1.5 hours on an M5 Mac.</p>
+        </li>
+        <li class="step glass rv">
+          <span class="step-n mono">03</span>
+          <div class="sv sv-cl" aria-hidden="true"><span class="row" style="--c:#6FA8FF"><i></i><b data-i18n="type.goal">Goal</b><em data-i18n="js.auto">auto</em><small class="mono">P1 04:12</small></span><span class="row" style="--c:#B4BCB6"><i></i><b data-i18n="type.faceoff">Faceoff</b><em data-i18n="js.auto">auto</em><small class="mono">P1 06:41</small></span><span class="row cand" style="--c:#6FA8FF"><i></i><b data-i18n="type.shotc">Shot candidate</b><span class="mini-yn"><u class="y" data-i18n="yn.yes">Yes</u><u data-i18n="yn.no">No</u></span><small class="mono">P2 15:20</small></span></div>
+          <h3 data-i18n="how.s3t">The list fills in, you answer Yes or No</h3>
+          <p data-i18n="how.s3p">Goals, power plays and penalty kills, faceoffs, zone entries and D-zone exits appear in the event list. Shot and turnover candidates play their clip by themselves: answer Yes or No with a click or the keyboard.</p>
+        </li>
+        <li class="step glass rv">
+          <span class="step-n mono">04</span>
+          <div class="sv sv-dr" aria-hidden="true"><svg viewBox="0 0 200 90"><circle class="pl a" cx="48" cy="58" r="5"/><circle class="pl a" cx="92" cy="30" r="5"/><circle class="pl b" cx="128" cy="52" r="5"/><circle class="spot" cx="150" cy="40" r="17"/><path class="arw" d="M54 54 Q 100 70 142 44" pathLength="1"/><path class="arh" d="M134 40 l9 3 -5 8"/></svg><span class="dr-tools"><svg><use href="#i-pen"/></svg></span></div>
+          <h3 data-i18n="how.s4t">Pick, draw, present</h3>
+          <p data-i18n="how.s4p">Choose the clips you need, add arrows and highlights with the drawing tools, show them to the team and export the report.</p>
+        </li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- 4b · KT-528/528b: MAÇ KÂĞIDI DESTEKLENEN LİGLER. Liste TEK yerde: aşağıdaki .lg-row satırları. Ülke başına bir satır: solda ülke (data-i18n lg.c.<kod>, çevrilir), sağda ligin ADI çipleri (özel ad: çevrilmez, data-i18n YOK); "+ gençlik ligleri" gibi genel çipler data-i18n lg.g.<anahtar> ile çevrilir.
+     YENİ ÜLKE/LİG: bir <li class="lg-row"> ekle (ya da mevcut satıra bir <li class="lg-chip">LigAdı</li>) + yeni ülke için lg.c.<kod> anahtarını dil dosyalarına yaz. SSS cevabı bu satırlardan js/main.js ile otomatik dolar. Lig adı yalnız düz metin (logo yok); "bağlantılı değil" notu aşağıda. -->
+<section class="sec leagues" id="leagues" aria-labelledby="lg-title">
+  <div class="wrap">
+    <div class="sec-head center">
+      <h2 id="lg-title" data-i18n="lg.title">HockeyCut works with these leagues</h2>
+      <p class="sub" data-i18n="lg.sub">Paste the link of the official game page; goals, penalties and power plays come from the game sheet.</p>
+    </div>
+    <ul class="lg-rows" id="lgRows">
+      <li class="lg-row" data-lg="iihf"><h3 class="lg-ulke" data-i18n="lg.c.iihf">IIHF</h3><ul class="lg-chips"><li class="lg-chip" data-i18n="lg.g.wc">World Championships (all divisions)</li><li class="lg-chip" data-i18n="lg.g.wcy">U20 and U18 World Championships</li><li class="lg-chip" data-i18n="lg.g.wcw">Women's World Championships</li><li class="lg-chip" data-i18n="lg.g.olq">Olympic qualification</li></ul></li>
+      <li class="lg-row" data-lg="tr"><h3 class="lg-ulke" data-i18n="lg.c.tr">Türkiye</h3><ul class="lg-chips"><li class="lg-chip">Erkekler Süper Lig</li><li class="lg-chip">Kadınlar Süper Lig</li><li class="lg-chip">Erkekler Birinci Lig</li><li class="lg-chip">Kadınlar Birinci Lig</li><li class="lg-chip" data-i18n="lg.g.youth">+ youth leagues</li></ul></li>
+      <li class="lg-row" data-lg="se"><h3 class="lg-ulke" data-i18n="lg.c.se">Sweden</h3><ul class="lg-chips"><li class="lg-chip">SHL</li><li class="lg-chip">HockeyAllsvenskan</li><li class="lg-chip">Hockeyettan</li><li class="lg-chip">HockeyTvåan</li><li class="lg-chip">HockeyTrean</li><li class="lg-chip">HockeyFyran</li><li class="lg-chip">SDHL</li><li class="lg-chip">NDHL</li><li class="lg-chip" data-i18n="lg.g.youth">+ youth leagues</li></ul></li>
+      <li class="lg-row" data-lg="fi"><h3 class="lg-ulke" data-i18n="lg.c.fi">Finland</h3><ul class="lg-chips"><li class="lg-chip">Mestis</li><li class="lg-chip">Suomi-sarja</li><li class="lg-chip">Auroraliiga</li><li class="lg-chip">Seniorit</li><li class="lg-chip" data-i18n="lg.g.youth">+ youth leagues</li></ul></li>
+      <li class="lg-row" data-lg="ch"><h3 class="lg-ulke" data-i18n="lg.c.ch">Switzerland</h3><ul class="lg-chips"><li class="lg-chip">National League</li><li class="lg-chip">Swiss League</li><li class="lg-chip">MySports League</li><li class="lg-chip">1. Liga</li></ul></li>
+      <li class="lg-row" data-lg="at"><h3 class="lg-ulke" data-i18n="lg.c.at">Austria</h3><ul class="lg-chips"><li class="lg-chip">ICE Hockey League</li><li class="lg-chip">Alps Hockey League</li><li class="lg-chip">Österreichische Eishockey Liga</li><li class="lg-chip">EWHL</li><li class="lg-chip">DEBL</li><li class="lg-chip" data-i18n="lg.g.youth">+ youth leagues</li></ul></li>
+      <li class="lg-row" data-lg="lv"><h3 class="lg-ulke" data-i18n="lg.c.lv">Latvia</h3><ul class="lg-chips"><li class="lg-chip">Optibet Hokeja Līga</li><li class="lg-chip">1. Līga</li><li class="lg-chip" data-i18n="lg.g.youthw">+ women's and youth leagues</li></ul></li>
+      <li class="lg-row" data-lg="si"><h3 class="lg-ulke" data-i18n="lg.c.si">Slovenia</h3><ul class="lg-chips"><li class="lg-chip">DP Člani</li><li class="lg-chip">IHL Člani</li><li class="lg-chip">DP Članice</li><li class="lg-chip" data-i18n="lg.g.youth">+ youth leagues</li></ul></li>
+      <li class="lg-row" data-lg="gb"><h3 class="lg-ulke" data-i18n="lg.c.gb">England</h3><ul class="lg-chips"><li class="lg-chip">Elite Ice Hockey League</li></ul></li>
+      <li class="lg-row" data-lg="ru"><h3 class="lg-ulke" data-i18n="lg.c.ru">Russia</h3><ul class="lg-chips"><li class="lg-chip">VHL</li><li class="lg-chip">ЖХЛ (Women's Hockey League)</li><li class="lg-chip">Kubok Pervogo Kanala</li><li class="lg-chip">Kubok Budushchego</li></ul></li>
+      <li class="lg-row" data-lg="kz"><h3 class="lg-ulke" data-i18n="lg.c.kz">Kazakhstan</h3><ul class="lg-chips"><li class="lg-chip">Pro Hokei Ligasy</li><li class="lg-chip">Jastar Hokei Ligasy</li><li class="lg-chip">Qyzdar Hokei Ligasy</li></ul></li>
+      <li class="lg-row" data-lg="be"><h3 class="lg-ulke" data-i18n="lg.c.be">Belgium</h3><ul class="lg-chips"><li class="lg-chip">Division 1</li><li class="lg-chip">Division 2</li><li class="lg-chip">Division 3</li><li class="lg-chip">Division 4</li><li class="lg-chip">Beker van België</li><li class="lg-chip">Under 23</li><li class="lg-chip" data-i18n="lg.g.youthw">+ women's and youth leagues</li></ul></li>
+      <li class="lg-row" data-lg="de"><h3 class="lg-ulke" data-i18n="lg.c.de">Germany</h3><ul class="lg-chips"><li class="lg-chip">PENNY DEL</li><li class="lg-chip">DEL2</li></ul></li>
+      <li class="lg-row" data-lg="lt"><h3 class="lg-ulke" data-i18n="lg.c.lt">Lithuania</h3><ul class="lg-chips"><li class="lg-chip">1 lyga</li><li class="lg-chip">Moterų čempionatas</li><li class="lg-chip">Jaunimo lyga</li><li class="lg-chip" data-i18n="lg.g.youth">+ youth leagues</li></ul></li>
+      <li class="lg-row" data-lg="us"><h3 class="lg-ulke" data-i18n="lg.c.us">United States</h3><ul class="lg-chips"><li class="lg-chip">NCAA Division I</li><li class="lg-chip">NCAA Division III</li></ul></li>
+    </ul>
+    <p class="lg-note" data-i18n="lg.note">If your league is not listed, goals are read from the scoreboard; more leagues are being added.</p>
+    <p class="lg-aff" data-i18n="lg.g.aff">League names belong to their owners; HockeyCut is not affiliated with these leagues.</p>
+  </div>
+</section>
+
+<!-- 5 · CLIP LIST -->
+<section class="sec clips" id="product" aria-labelledby="clips-title">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 id="clips-title"><span data-i18n="clips.title1">Every event, already cut.</span> <span class="dim" data-i18n="clips.title2">Pick one and press play.</span></h2>
+      <p class="sub" data-i18n="clips.sub">Choose an event type and the clips are already there, each with period, game time, team and length — the same list you work with in the app.</p>
+    </div>
+    <div class="clipbox glass">
+      <div class="clip-tabs" role="tablist" aria-labelledby="clips-title" id="clipTabs">
+        <button role="tab" type="button" id="tab-goal" aria-controls="clipPanel" aria-selected="true" data-type="goal"><i class="dot goal"></i><span data-i18n="type.goal">Goal</span><span class="cnt mono">3</span></button>
+        <button role="tab" type="button" id="tab-pp" aria-controls="clipPanel" aria-selected="false" tabindex="-1" data-type="pp"><i class="dot pp"></i><span data-i18n="type.pp">Power play</span><span class="cnt mono">3</span></button>
+        <button role="tab" type="button" id="tab-faceoff" aria-controls="clipPanel" aria-selected="false" tabindex="-1" data-type="faceoff"><i class="dot faceoff"></i><span data-i18n="type.faceoff">Faceoff</span><span class="cnt mono">5</span></button>
+        <button role="tab" type="button" id="tab-entry" aria-controls="clipPanel" aria-selected="false" tabindex="-1" data-type="entry"><i class="dot entry"></i><span data-i18n="type.entry">Zone entry</span><span class="cnt mono">4</span></button>
+        <button role="tab" type="button" id="tab-exit" aria-controls="clipPanel" aria-selected="false" tabindex="-1" data-type="exit"><i class="dot exit"></i><span data-i18n="type.exit">D-zone exit</span><span class="cnt mono">4</span></button>
+        <button role="tab" type="button" id="tab-shot" aria-controls="clipPanel" aria-selected="false" tabindex="-1" data-type="shot"><i class="dot shot"></i><span data-i18n="type.shotc">Shot candidate</span><span class="cnt mono">6</span></button>
+        <button role="tab" type="button" id="tab-turn" aria-controls="clipPanel" aria-selected="false" tabindex="-1" data-type="turn"><i class="dot turn"></i><span data-i18n="type.turnc">Turnover candidate</span><span class="cnt mono">3</span></button>
+      </div>
+      <div class="clip-body" id="clipPanel" role="tabpanel" aria-labelledby="tab-goal">
+        <ul class="clip-list" id="clipList" aria-label="Clips"></ul>
+        <div class="clip-preview" id="clipPreview" aria-live="polite">
+          <div class="cp-media" id="cpMedia" role="img" aria-label="Animated demo scene" data-scene="goal">
+            <svg class="cp-ice" viewBox="0 0 600 330" preserveAspectRatio="xMidYMid meet" aria-hidden="true"><use href="#rinkArt"/><g class="bench"><rect x="150" y="305" width="110" height="20" rx="5"/><rect x="340" y="305" width="110" height="20" rx="5"/><rect class="pbox" x="281" y="305" width="38" height="20" rx="5"/></g></svg>
+            <canvas class="cp-cv" id="cpCanvas" aria-hidden="true"></canvas>
+            <div class="cp-q" id="cpQ" hidden aria-hidden="true"><span class="cp-ql"></span><span class="cp-qy">Yes</span><span class="cp-qn">No</span></div>
+            <span class="chip-demo" data-i18n="panel.demo">Demo data</span>
+            <span class="cp-scrub" aria-hidden="true"><i class="cp-range"></i><i class="cp-head"></i></span>
+          </div>
+          <div class="cp-info">
+            <p class="cp-kicker"><span class="tbadge" id="cpType">Shot</span><span class="team" id="cpTeam">Home</span><span class="mono" id="cpWhen">P1 04:12</span></p>
+            <h3 class="cp-title mono" id="cpTitle">Shot · Home · P1 04:12</h3>
+            <p class="cp-desc" id="cpDesc"></p>
+            <div class="cp-actions" id="cpYn" hidden aria-hidden="true"><span class="cp-btn y"><svg><use href="#i-check"/></svg><span data-i18n="yn.yes">Yes</span></span><span class="cp-btn n"><svg><use href="#i-x"/></svg><span data-i18n="yn.no">No</span></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5b · UYGULAMADAN GERÇEK EKRAN (video alanı kırpıldı: maç görüntüsü yok) -->
+<section class="sec app" id="app" aria-labelledby="app-title">
+  <div class="wrap app-grid">
+    <div class="sec-head">
+      <h2 id="app-title"><span data-i18n="app.title1">The timeline you work with,</span> <span class="dim" data-i18n="app.title2">in the Mac app.</span></h2>
+      <p class="sub" data-i18n="app.sub">Events sit in lanes by type, with the game clock and score above.</p>
+      <ul class="app-list">
+        <li style="--c:#6FA8FF"><i></i><span data-i18n="app.l1">Attack: goals, zone entries</span></li>
+        <li style="--c:#F2A256"><i></i><span data-i18n="app.l2">Defense: D-zone exits</span></li>
+        <li style="--c:#B4BCB6"><i></i><span data-i18n="app.l3">Other: faceoffs. Power plays and penalty kills have their own lane.</span></li>
+      </ul>
+    </div>
+    <figure class="app-fig">
+      <img src="img/app-zaman-cizelgesi.png" width="932" height="166" loading="lazy" decoding="async" data-i18n-alt="app.alt" alt="Screenshot of the Mac app: score row and event timeline with lanes for attack, defense, zone, other, and power play / penalty kill.">
+      <figcaption data-i18n="app.cap">The event timeline in the Mac app. Test clip, Turkish interface.</figcaption>
+    </figure>
+  </div>
+  <div class="wrap">
+    <div class="mock-grid" id="mocks">
+      <figure class="mock rv">
+        <div class="mock-win" aria-hidden="true">
+          <div class="mw-top"><span class="hp-dots"><i></i><i></i><i></i></span><b data-i18n="mock.ev.t">Events</b><span class="chip-demo" data-i18n="panel.demo">Demo data</span></div>
+          <div class="mw-body">
+            <div class="mw-pills"><u class="on" data-i18n="mock.all">All</u><u data-i18n="js.home">Home</u><u data-i18n="js.away">Away</u><span class="mw-play"><svg><use href="#i-play"/></svg><span data-i18n="mock.playall">Play all</span></span></div>
+            <ul class="mw-rows">
+              <li style="--c:#6FA8FF"><i></i><b data-i18n="js.goal">Goal</b><small class="mono">P1 04:12</small><span class="mw-rate"><u class="on" data-i18n="mock.fav">Favorite</u><u data-i18n="mock.good">Good</u><u data-i18n="mock.bad">Poor</u></span></li>
+              <li style="--c:#B4BCB6"><i></i><b data-i18n="js.faceoff">Faceoff</b><small class="mono">P1 06:41</small><span class="mw-rate"><u data-i18n="mock.fav">Favorite</u><u class="on" data-i18n="mock.good">Good</u><u data-i18n="mock.bad">Poor</u></span></li>
+              <li style="--c:#6FA8FF"><i></i><b data-i18n="js.entry">Zone entry</b><small class="mono">P2 03:12</small><span class="mw-rate"><u data-i18n="mock.fav">Favorite</u><u data-i18n="mock.good">Good</u><u data-i18n="mock.bad">Poor</u></span></li>
+              <li style="--c:#F2A256"><i></i><b data-i18n="js.exit">D-zone exit</b><small class="mono">P2 05:03</small><span class="mw-rate"><u data-i18n="mock.fav">Favorite</u><u data-i18n="mock.good">Good</u><u class="on bad" data-i18n="mock.bad">Poor</u></span></li>
+            </ul>
+          </div>
+        </div>
+        <figcaption data-i18n="mock.ev.cap">Event list: filter by team, rate each clip, play them all in a row.</figcaption>
+      </figure>
+      <figure class="mock rv">
+        <div class="mock-win" aria-hidden="true">
+          <div class="mw-top"><span class="hp-dots"><i></i><i></i><i></i></span><b data-i18n="mock.yn.t">Yes / No</b><span class="chip-demo" data-i18n="panel.demo">Demo data</span></div>
+          <div class="mw-body mw-yn">
+            <p class="mw-q"><span class="mono">1/78</span> · <b data-i18n="mock.yn.q">Is this a shot?</b></p>
+            <div class="mw-clip"><svg viewBox="0 0 600 300" preserveAspectRatio="xMidYMid slice"><use href="#rinkArt"/><circle cx="440" cy="120" r="9" fill="#ECE6D6"/><circle cx="470" cy="190" r="9" fill="#EE86C4"/><circle cx="500" cy="150" r="9" fill="#EE86C4"/><circle cx="396" cy="156" r="9" fill="#ECE6D6"/><path d="M404 152 L540 150" stroke="#39FF88" stroke-width="3" stroke-dasharray="7 6" stroke-linecap="round"/><circle cx="404" cy="152" r="5" fill="#0a0a0a" stroke="#f4fff0" stroke-width="2"/></svg></div>
+            <div class="mw-btns"><span class="mw-b y"><svg><use href="#i-check"/></svg><span data-i18n="yn.yes">Yes</span></span><span class="mw-b n"><svg><use href="#i-x"/></svg><span data-i18n="yn.no">No</span></span></div>
+          </div>
+        </div>
+        <figcaption data-i18n="mock.yn.cap">The clip plays by itself; you answer with one click or key.</figcaption>
+      </figure>
+      <figure class="mock rv">
+        <div class="mock-win" aria-hidden="true">
+          <div class="mw-top"><span class="hp-dots"><i></i><i></i><i></i></span><b data-i18n="mock.dr.t">Clip &amp; drawing</b><span class="chip-demo" data-i18n="panel.demo">Demo data</span></div>
+          <div class="mw-body">
+            <div class="mw-clip tall"><svg viewBox="0 0 600 300" preserveAspectRatio="xMidYMid slice"><use href="#rinkArt"/><circle cx="210" cy="190" r="9" fill="#ECE6D6"/><circle cx="300" cy="110" r="9" fill="#ECE6D6"/><circle cx="360" cy="180" r="9" fill="#EE86C4"/><circle cx="440" cy="140" r="9" fill="#EE86C4"/><path d="M222 184 Q 300 220 392 150" fill="none" stroke="#ffd23f" stroke-width="5" stroke-linecap="round"/><path d="M380 142 l16 6 -9 14" fill="none" stroke="#ffd23f" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="440" cy="140" r="34" fill="rgba(255,255,255,.08)" stroke="#fff" stroke-width="3" stroke-dasharray="8 6"/></svg></div>
+            <div class="mw-tools"><span class="mw-tool on"><svg><use href="#i-pen"/></svg></span><span class="mw-tool"><svg><use href="#i-scan"/></svg></span><span class="mw-tool"><svg><use href="#i-ev-entry"/></svg></span><span class="mw-tool"><svg><use href="#i-share"/></svg></span></div>
+          </div>
+        </div>
+        <figcaption data-i18n="mock.dr.cap">Draw arrows and circles on the clip to make your point.</figcaption>
+      </figure>
+      <figure class="mock rv">
+        <div class="mock-win" aria-hidden="true">
+          <div class="mw-top"><span class="hp-dots"><i></i><i></i><i></i></span><b data-i18n="mock.st.t">Team statistics</b><span class="chip-demo" data-i18n="panel.demo">Demo data</span></div>
+          <div class="mw-body mw-stats">
+            <div class="mw-card"><small data-i18n="mock.st.entry">Zone entries</small><div class="mw-pair"><b class="h">14</b><b class="a">9</b></div><span class="mw-bar"><i style="width:61%"></i></span></div>
+            <div class="mw-card"><small data-i18n="mock.st.exit">D-zone exits</small><div class="mw-pair"><b class="h">11</b><b class="a">12</b></div><span class="mw-bar"><i style="width:48%"></i></span></div>
+            <div class="mw-card"><small data-i18n="mock.st.fo">Faceoffs</small><div class="mw-pair"><b class="h">24</b><b class="a">21</b></div><span class="mw-bar"><i style="width:53%"></i></span></div>
+            <div class="mw-card"><small data-i18n="mock.st.goal">Goals</small><div class="mw-pair"><b class="h">3</b><b class="a">2</b></div><span class="mw-bar"><i style="width:60%"></i></span></div>
+          </div>
+        </div>
+        <figcaption data-i18n="mock.st.cap">Team numbers for every game, ready for your report.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- 6 · ANALYTICS (KT-512: nokta haritası yok; yalnız bölge girişi/gol ve faceoff bölgesi sayıları, demo veri) -->
+<section class="sec analytics" id="analytics" aria-labelledby="an-title">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 id="an-title"><span data-i18n="an.title1">Team numbers and a report,</span> <span class="dim" data-i18n="an.title2">from the same events.</span></h2>
+      <p class="sub" data-i18n="an.sub">Event counts by period and faceoffs by zone fill in from the event list, for each team, in the app's statistics and report.</p>
+    </div>
+    <div class="an-grid">
+      <article class="card glass rv an-per">
+        <header class="card-h"><h3 data-i18n="an.perT">Zone entries and goals by period</h3><span class="chip-demo" data-i18n="panel.demo">Demo data</span></header>
+        <div class="per-wrap" id="perBars"></div>
+        <ul class="legend">
+          <li><i class="lg home"></i><span data-i18n="an.home">Home</span></li>
+          <li><i class="lg away"></i><span data-i18n="an.away">Away</span></li>
+        </ul>
+      </article>
+      <article class="card glass rv an-fo">
+        <header class="card-h"><h3 data-i18n="an.foT">Faceoffs · by dot and zone</h3><span class="chip-demo" data-i18n="panel.demo">Demo data</span></header>
+        <div class="fo-wrap"><div class="fo-rink" id="foRink"></div><div class="fo-tab" id="foTab"></div></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<div class="sep" aria-hidden="true"><svg><use href="#i-sep"/></svg></div>
+
+<!-- 7 · PRIVACY -->
+<section class="sec privacy" id="privacy" aria-labelledby="pv-title">
+  <div class="wrap pv-grid">
+    <div class="pv-art" aria-hidden="true">
+      <svg viewBox="0 0 480 360" class="pv-svg">
+        <defs>
+          <radialGradient id="pvGlow" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#22c55e" stop-opacity=".35"/><stop offset="1" stop-color="#22c55e" stop-opacity="0"/></radialGradient>
+          <linearGradient id="pvScreen" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#131a19"/><stop offset="1" stop-color="#0b0f10"/></linearGradient>
+        </defs>
+        <circle cx="240" cy="170" r="170" fill="url(#pvGlow)"/>
+        <g class="pv-orbit" fill="none" stroke="#86efac" stroke-opacity=".22"><ellipse cx="240" cy="172" rx="200" ry="70"/><ellipse cx="240" cy="172" rx="160" ry="128" stroke-dasharray="2 6"/></g>
+        <rect x="110" y="70" width="260" height="168" rx="12" fill="url(#pvScreen)" stroke="#ffffff" stroke-opacity=".22" stroke-width="1.5"/>
+        <rect x="122" y="82" width="236" height="144" rx="6" fill="#0a0f0f" stroke="#ffffff" stroke-opacity=".06"/>
+        <path d="M86 246h308l-14 16H100z" fill="#1a2120" stroke="#ffffff" stroke-opacity=".18"/>
+        <g transform="translate(240 154)">
+          <path d="M0-50 38-36v30c0 26-16 46-38 56-22-10-38-30-38-56v-30z" fill="#0d2416" stroke="#4ade80" stroke-width="1.6"/>
+          <rect x="-14" y="-6" width="28" height="22" rx="4" fill="none" stroke="#b6ff3b" stroke-width="2"/>
+          <path d="M-8-6v-7a8 8 0 0 1 16 0v7" fill="none" stroke="#b6ff3b" stroke-width="2"/>
+        </g>
+        <g transform="translate(150 100)"><rect width="42" height="28" rx="4" fill="#132019" stroke="#22c55e" stroke-opacity=".6"/><path d="m17 8 9 6-9 6z" fill="#86efac"/></g>
+        <g class="pv-blocked" transform="translate(420 70)"><path d="M-26 8a14 14 0 0 1 4-27 20 20 0 0 1 38 4 12 12 0 0 1 2 23z" fill="none" stroke="#ffffff" stroke-opacity=".35" stroke-width="1.6"/><path d="m-14-18 26 26" stroke="#fb923c" stroke-width="2" stroke-linecap="round"/></g>
+        <path d="M372 110 Q 395 92 400 82" fill="none" stroke="#ffffff" stroke-opacity=".3" stroke-dasharray="3 5"/>
+      </svg>
+    </div>
+    <div class="pv-copy">
+      <h2 id="pv-title" ><span data-i18n="pv.title1">The analysis happens on your Mac;</span> <span data-i18n="pv.title2">the full game is never uploaded.</span></h2>
+      <p class="sub" data-i18n="pv.sub">Analysis runs locally on Apple Silicon; the full game video is not uploaded anywhere. Even a 4K video is converted to 1080p right on your computer.</p>
+      <ul class="pv-list">
+        <li><svg aria-hidden="true"><use href="#i-lock"/></svg><div><h3 data-i18n="pv.l1t">Local analysis</h3><p data-i18n="pv.l1p">The model runs on your Mac. No upload queue, no waiting on someone else's servers.</p></div></li>
+        <li><svg aria-hidden="true"><use href="#i-share"/></svg><div><h3 data-i18n="pv.l2t">Your answers help train the model</h3><p data-i18n="pv.l2p">That is what you give back for the free or $10 plan: your Yes and No answers and short clips of those moments are sent to us to improve our model. They are used only for training and stored encrypted; never sold or published.</p></div></li>
+        <li><svg aria-hidden="true"><use href="#i-check"/></svg><div><h3 data-i18n="pv.l4t">One confirmation, once</h3><p data-i18n="pv.l4p">When you first open the app you confirm that you own the video or have the owner's permission, and that the people shown (their guardians, for players under 18) agreed to its use. You are not asked again.</p></div></li>
+        <li><svg aria-hidden="true"><use href="#i-club"/></svg><div><h3 data-i18n="pv.l3t">No face recognition</h3><p data-i18n="pv.l3p">Players are not identified from their faces. Youth footage gets extra protection.</p></div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="sep" aria-hidden="true"><svg><use href="#i-sep"/></svg></div>
+
+<!-- 8 · ROLES -->
+<section class="sec roles" id="roles" aria-labelledby="roles-title">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 id="roles-title"><span data-i18n="roles.title1">Built for the people</span> <span class="dim" data-i18n="roles.title2">who work in the video room.</span></h2>
+    </div>
+    <div class="roles-grid">
+      <article class="role glass">
+        <span class="role-ic"><svg aria-hidden="true"><use href="#i-whistle"/></svg></span>
+        <h3 data-i18n="roles.c.t">Coach</h3>
+        <p data-i18n="roles.c.p">Walk into the next practice with the clips already cut — and your evening back.</p>
+        <ul>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="roles.c.1">Power-play and penalty-kill clips, ready to show (best with the official game sheet)</span></li>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="roles.c.2">Draw on clips and present them to the team</span></li>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="roles.c.3">Export clips and the report to show the team</span></li>
+        </ul>
+      </article>
+      <article class="role glass">
+        <span class="role-ic"><svg aria-hidden="true"><use href="#i-chart"/></svg></span>
+        <h3 data-i18n="roles.a.t">Video analyst</h3>
+        <p data-i18n="roles.a.p">Spend your time on the analysis, not on the tagging.</p>
+        <ul>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="roles.a.1">Events tagged with period and game time</span></li>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="roles.a.2">Shot and turnover candidates: you confirm each with Yes or No</span></li>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="roles.a.3">Clip list by event type, team and period</span></li>
+        </ul>
+      </article>
+      <article class="role glass">
+        <span class="role-ic"><svg aria-hidden="true"><use href="#i-club"/></svg></span>
+        <h3 data-i18n="roles.k.t">Club</h3>
+        <p data-i18n="roles.k.p">One standard of video work across every team you run.</p>
+        <ul>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="roles.k.1">Team statistics and a report for every game</span></li>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="roles.k.2">Analysis runs on club Macs</span></li>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="roles.k.3">Clear monthly price, no contract talks</span></li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- 9 · PRICING + FAQ -->
+<section class="sec pricing" id="pricing" aria-labelledby="pr-title">
+  <div class="wrap">
+    <div class="sec-head center">
+      <h2 id="pr-title"><span data-i18n="pr.title1">Simple pricing.</span> <span class="dim" data-i18n="pr.title2">Shown up front.</span></h2>
+      <p class="sub" data-i18n="pr.sub">Two plans. The rules are shown up front, including what we ask of you.</p>
+    </div>
+    <div class="plans">
+      <article class="plan glass">
+        <h3 data-i18n="pr.free.t">Free</h3>
+        <p class="plan-desc" data-i18n="pr.free.d">Try it on your own games.</p>
+        <p class="price"><b class="mono" data-i18n="pr.free.price">$0</b><span data-i18n="pr.free.unit">2 games</span></p>
+        <ul>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="pr.free.1">2 games</span></li>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="pr.free.2">After each game, answer the candidates with Yes or No; the next game opens</span></li>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="pr.free.3">No card, no sign-up</span></li>
+        </ul>
+        <a class="btn btn-ghost" href="#download"><span data-i18n="pr.free.cta">Download for Mac</span></a>
+      </article>
+      <article class="plan plan-pro glass">
+        <h3 data-i18n="pr.pro.t">Premium</h3>
+        <p class="plan-desc" data-i18n="pr.pro.d">For teams that analyze games regularly.</p>
+        <p class="price"><b class="mono" data-i18n="pr.pro.price">$10</b><span data-i18n="pr.pro.unit">per month</span></p>
+        <ul>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="pr.pro.1">10 games per month</span></li>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="pr.pro.2">After each game, answering 20 candidates is enough</span></li>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="pr.pro.3">Activated with a license key</span></li>
+        </ul>
+        <a class="btn btn-primary" data-hk-odeme="Taking you to sign-up" data-portal="/kayit?plan=pro" href="#download"><span data-i18n="pr.pro.cta">Get Premium</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        <p class="plan-note" data-i18n="pr.pro.note">For now it runs on Macs with Apple Silicon; Windows is on the way.</p>
+      </article>
+    </div>
+    <div class="pr-notes">
+      <p data-i18n="pr.foot">Both plans include the whole app. In return: your answers and short clips are sent to us as a contribution to model training.</p>
+    </div>
+
+    <div class="faq" id="faq">
+      <h3 class="faq-title" data-i18n="faq.title">Frequently asked questions</h3>
+      <div class="faq-list">
+        <div class="qa"><h4><button type="button" aria-expanded="false" aria-controls="qa1" id="qa1b"><span data-i18n="faq.q1">Do I still have to tag anything by hand?</span><svg aria-hidden="true"><use href="#i-chev"/></svg></button></h4><div class="qa-a" id="qa1" role="region" aria-labelledby="qa1b"><div><p data-i18n="faq.a1">Goals and power plays / penalty kills come from the official game sheet and the scoreboard. Faceoffs, zone entries and D-zone exits are listed automatically. Shots and turnovers come as candidates: the clip plays by itself and you answer Yes or No with a click or the keyboard.</p></div></div></div>
+        <div class="qa"><h4><button type="button" aria-expanded="false" aria-controls="qa2" id="qa2b"><span data-i18n="faq.q2">Is my video uploaded anywhere?</span><svg aria-hidden="true"><use href="#i-chev"/></svg></button></h4><div class="qa-a" id="qa2" role="region" aria-labelledby="qa2b"><div><p data-i18n="faq.a2">The full game is not uploaded: the analysis runs on your Mac, and a 4K video is converted to 1080p there too. What is sent to us are your Yes and No answers and short clips of those moments, to improve our model. They are used only for training and stored encrypted; never sold or published.</p></div></div></div>
+        <div class="qa"><h4><button type="button" aria-expanded="false" aria-controls="qa3" id="qa3b"><span data-i18n="faq.q3">Which computer do I need?</span><svg aria-hidden="true"><use href="#i-chev"/></svg></button></h4><div class="qa-a" id="qa3" role="region" aria-labelledby="qa3b"><div><p data-i18n="faq.a3">A Mac with Apple Silicon (M1 or newer). There is no Windows version yet — join the Windows waitlist below and we will tell you when it is ready.</p></div></div></div>
+        <div class="qa"><h4><button type="button" aria-expanded="false" aria-controls="qa4" id="qa4b"><span data-i18n="faq.q4">How does it find the events?</span><svg aria-hidden="true"><use href="#i-chev"/></svg></button></h4><div class="qa-a" id="qa4" role="region" aria-labelledby="qa4b"><div><p data-i18n="faq.a4">Goals and power plays / penalty kills (penalty details included) come from the official game sheet and the scoreboard. Faceoffs with their zone, zone entries and D-zone exits are listed automatically. Shots and turnovers come as candidates that you confirm with Yes or No. Statistics are for the team. Supported leagues are listed under “Which leagues does HockeyCut work with?” below.</p></div></div></div>
+        <div class="qa"><h4><button type="button" aria-expanded="false" aria-controls="qa5" id="qa5b"><span data-i18n="faq.q5">How do the Free and Premium plans work?</span><svg aria-hidden="true"><use href="#i-chev"/></svg></button></h4><div class="qa-a" id="qa5" role="region" aria-labelledby="qa5b"><div><p data-i18n="faq.a5">Free: 2 games. After each game you answer its Yes/No candidates and the next one opens. Premium: $10 per month, 10 games; answering 20 candidates after each game is enough. In return, your answers and short clips are sent to us for model training.</p></div></div></div>
+        <div class="qa"><h4><button type="button" aria-expanded="false" aria-controls="qa6" id="qa6b"><span data-i18n="faq.q6">What about youth games and player privacy?</span><svg aria-hidden="true"><use href="#i-chev"/></svg></button></h4><div class="qa-a" id="qa6" role="region" aria-labelledby="qa6b"><div><p data-i18n="faq.a6">There is no face recognition. For youth games (under 18) and games without a confirmed age category, player names are not stored. Single frames go to an outside AI service (Anthropic, USA) only if you switch on the optional Cloud verification and confirm that guardian consent was obtained for that game.</p></div></div></div>
+        <div class="qa"><h4><button type="button" aria-expanded="false" aria-controls="qa7" id="qa7b"><span data-i18n="faq.q7">How long does the analysis take?</span><svg aria-hidden="true"><use href="#i-chev"/></svg></button></h4><div class="qa-a" id="qa7" role="region" aria-labelledby="qa7b"><div><p data-i18n="faq.a7">One period takes about 1.5 hours on an M5 Mac. The analysis runs by itself, so you can work on something else meanwhile.</p></div></div></div>
+        <div class="qa"><h4><button type="button" aria-expanded="false" aria-controls="qa8" id="qa8b"><span data-i18n="faq.q8">Which leagues does HockeyCut work with?</span><svg aria-hidden="true"><use href="#i-chev"/></svg></button></h4><div class="qa-a" id="qa8" role="region" aria-labelledby="qa8b"><div><p><span data-i18n="faq.a8a">Supported:</span> <span data-lig-liste></span>. <span data-i18n="faq.a8b">Just paste the link.</span></p></div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 12 · İNDİR (KT-512 §5: e-postayla indirme bağlantısı; açık rıza) -->
+<section class="sec closing" id="download" aria-labelledby="end-title">
+  <div class="wrap">
+    <div class="end glass">
+      <div class="end-glow" aria-hidden="true"></div>
+      <h2 id="end-title"><span data-i18n="end.title1">Your next game,</span> <span data-i18n="end.title2">already cut into clips.</span></h2>
+      <p class="sub" id="dlSub" data-i18n="end.sub">Enter your e-mail and we send you the download link for the Mac app.</p>
+      <!-- İndirme kapalıyken (js/ayar.js INDIRME_ACIK=false) form ve bekleme listesi kaldırılır, bu satır görünür -->
+      <p class="dl-soon" id="dlSoon" data-i18n="dl.soon">Downloads open very soon.</p>
+      <form class="dl" id="dlForm" novalidate>
+        <div class="dl-field">
+          <label class="dl-lbl" for="dlEmail" data-i18n="dl.email">Your e-mail</label>
+          <input id="dlEmail" name="eposta" type="email" inputmode="email" autocomplete="email" required maxlength="254" placeholder="name@club.com" aria-describedby="dlMsg">
+        </div>
+        <div class="dl-consent">
+          <input id="dlRiza" name="riza" type="checkbox" required aria-describedby="dlMsg">
+          <span><label for="dlRiza" data-i18n="dl.riza">I agree that my e-mail address is used to send me the download link.</label> <a id="dlNotice" href="yasal/en/privacy.html" data-tr="yasal/aydinlatma.html" data-i18n="dl.notice">Privacy notice</a></span>
+        </div>
+        <button class="btn btn-primary btn-lg" type="submit" id="dlBtn"><span data-i18n="dl.btn">Send me the link</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
+        <p class="dl-msg" id="dlMsg" role="status" aria-live="polite"></p>
+        <p class="dl-note" data-i18n="dl.note">The link works for 72 hours. Mac only for now: Apple Silicon (M1 or newer).</p>
+      </form>
+      <div class="wait" aria-labelledby="wait-title">
+        <h3 id="wait-title" data-i18n="end.waitT">On Windows? Join the waitlist.</h3>
+        <div class="wait-row">
+          <a class="btn btn-ghost" id="waitLink" data-portal="/bekleme" href="#download"><span data-i18n="end.waitBtn">Join the waitlist</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </div>
+        <p class="wait-note" id="waitNote" data-i18n="end.waitNote">Mac comes first. Leave your e-mail on the next page; consent and privacy notice are shown there.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-in">
+    <div class="foot-brand">
+      <a class="brand" href="#top" aria-label="HockeyCut — back to top">
+        <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="9" fill="url(#lg-b)"/><path d="M12 6.5l6.6 13.6q.9 1.9 2.9 1.9H25" fill="none" stroke="#03140a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><ellipse cx="10.4" cy="22.6" rx="3.7" ry="2.1" fill="#03140a"/></svg>
+        <span class="brand-name">Hockey<em>Cut</em></span>
+      </a>
+      <p data-i18n="foot.tag">AI game breakdown for ice hockey. Made for coaches, analysts and clubs.</p>
+    </div>
+    <nav class="foot-nav" aria-label="Footer">
+      <div><h2 data-i18n="foot.product">Product</h2><a href="#product" data-i18n="nav.product">Product</a><a href="#how" data-i18n="nav.how">How it works</a><a href="#leagues" data-i18n="nav.leagues">Leagues</a><a href="#pricing" data-i18n="nav.pricing">Pricing</a><a href="#faq" data-i18n="nav.faq">FAQ</a></div>
+      <div><h2 data-i18n="foot.account">Get started</h2><a href="#download" data-i18n="nav.dl">Download</a><a data-portal="/kayit?plan=pro" href="#download" data-i18n="pr.pro.t">Premium</a></div>
+      <div><h2 data-i18n="foot.legal">Legal</h2><a href="yasal/en/terms.html" data-tr="yasal/kosullar.html" data-i18n="foot.terms">Terms</a><a href="yasal/en/privacy.html" data-tr="yasal/gizlilik.html" data-i18n="foot.privacy">Privacy notice</a><a href="yasal/en/eula.html" data-tr="yasal/aydinlatma.html" data-i18n-tr="foot.notice" data-i18n="foot.eula">EULA</a><a href="yasal/en/refunds.html" data-tr="yasal/mesafeli-satis.html" data-i18n-tr="foot.distance" data-i18n="foot.refunds">Refunds</a></div>
+    </nav>
+  </div>
+  <div class="wrap foot-base">
+    <p data-i18n="foot.copy">© 2026 HockeyCut</p>
+    <p data-i18n="foot.na">Pre-launch software. The legal texts linked above are drafts awaiting lawyer approval.</p>
+  </div>
+</footer>
+
+<script src="js/ayar.js"></script>
+<script src="js/i18n.js"></script>
+<script src="js/main.js" defer></script>
+<script src="js/indir.js" defer></script>
+<script src="js/hero.js" defer></script>
+<script src="js/klip-anim.js" defer></script>
+<script src="js/charts.js" defer></script>
+<script src="js/hareket.js" defer></script>
+<script src="js/hareket-site.js" defer></script>
+</body>
+</html>

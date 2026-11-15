@@ -1,0 +1,103 @@
+/* ==========================================================================
+   HockeyCut — Ortak hareket katmanı (KT-393) · hareket.js ile birlikte kullanılır
+   Tek kaynak: prototype/tasarim/hareket.css (+ hareket.js). Kopyalar: portal/public/css|js, site-v2/css|js
+   (kopya başlığı aynıdır; değişiklik burada yapılır, scripts/hareket-esitle.mjs kopyalar).
+   İlkeler: yalnız transform + opacity (60 fps, düşük GPU); prefers-reduced-motion'da anında son durum;
+   analiz ekranında video oynarken süsleme hareketi YOK (hareket.js denetler); dış CDN/yazı tipi YOK.
+   Esin (kopya değil): "Claude Motion Effects" listesindeki fikirler — number roll, line draw, confetti burst,
+   rings orbit, button pay, particles→logo, kinetic words, glass tilt. Kod ve görseller bu projeye özgüdür.
+   Bölümler: 1 belirteç · 2 sayı rulosu · 3 halka/yörünge yükleniyor · 4 ödeme düğmesi · 5 kinetik başlık
+             6 kutlama çipi · 7 yardımcılar · 8 azaltılmış hareket
+   ========================================================================== */
+
+/* ---------- 1. Belirteçler (uygulama + portal: --hk-*, site: --fos/--g400; yedek sabitler) ---------- */
+:root{
+  --hh-fosfor:var(--hk-fosfor,var(--fos,#39FF88));
+  --hh-yesil:var(--hk-yesil-500,var(--g500,#22C55E));
+  --hh-yesil-a:var(--hk-yesil-400,var(--g400,#4ADE80));
+  --hh-egri:var(--hk-egri-cikis,var(--ease,cubic-bezier(.16,1,.3,1)));
+}
+
+/* ---------- 2. Sayı rulosu (number roll) — hareket.js asıl metni gizler, rakam sütunlarını kaydırır, bitince geri koyar ---------- */
+.hk-rulo-ana{position:relative;color:transparent!important;-webkit-text-fill-color:transparent!important;font-variant-numeric:tabular-nums;}
+.hk-rulo{position:absolute;left:0;top:0;white-space:pre;pointer-events:none;user-select:none;display:flex;}
+.hk-rulo .hk-k{display:block;overflow:hidden;height:var(--hk-rh);}
+.hk-rulo .hk-ks{display:block;height:calc(var(--hk-rh)*20);will-change:transform;}
+.hk-rulo .hk-ks::before{content:"0\A 1\A 2\A 3\A 4\A 5\A 6\A 7\A 8\A 9\A 0\A 1\A 2\A 3\A 4\A 5\A 6\A 7\A 8\A 9";white-space:pre;display:block;line-height:var(--hk-rh);}
+.hk-rulo .hk-c{display:block;height:var(--hk-rh);line-height:var(--hk-rh);}
+.hk-rulo .hk-c::before{content:attr(data-c);}
+
+/* ---------- 3. Halka / yörünge yükleniyor (rings → orbit): işlem sürerken sakin, tek renk ---------- */
+.hk-halka{position:relative;display:inline-block;width:var(--hk-halka-boy,44px);height:var(--hk-halka-boy,44px);flex:none;}
+.hk-halka>i{position:absolute;border-radius:50%;border:1.5px solid rgba(57,255,136,.28);animation:hk-yorunge var(--hk-hiz,1.6s) linear infinite;}
+.hk-halka>i::after{content:"";position:absolute;top:-3.5px;left:50%;width:6px;height:6px;margin-left:-3px;border-radius:50%;background:var(--hh-fosfor);box-shadow:0 0 8px var(--hh-fosfor);}
+.hk-halka>i:nth-child(1){inset:0;}
+.hk-halka>i:nth-child(2){inset:19%;--hk-hiz:1.1s;animation-direction:reverse;}
+.hk-halka>i:nth-child(3){inset:38%;--hk-hiz:.8s;}
+@keyframes hk-yorunge{to{transform:rotate(360deg);}}
+
+/* Maç kartı küçük resmi: işlem sürüyorsa (ince çubuk .prog var) ortada iki halka yörüngesi. Yalnız CSS; görüntüyü örtmez. */
+.thumb:has(>.prog)::before,.thumb:has(>.prog)::after{
+  content:"";position:absolute;left:6px;top:6px;border-radius:50%;pointer-events:none;z-index:2;
+  border:1.5px solid rgba(57,255,136,.32);
+  background:radial-gradient(circle at 50% 2px,var(--hh-fosfor) 0 1.8px,transparent 2.4px),rgba(11,12,11,.55);
+  animation:hk-yorunge 1.7s linear infinite;
+}
+.thumb:has(>.prog)::before{width:22px;height:22px;}
+.thumb:has(>.prog)::after{width:12px;height:12px;margin:5px 0 0 5px;animation-duration:1.1s;animation-direction:reverse;}
+
+/* ---------- 4. Ödeme düğmesi (button → pay): tıklayınca halka döner, sonra onay işareti çizilir ---------- */
+[data-hk-odeme]{position:relative;}
+[data-hk-odeme] .hk-od{position:absolute;inset:0;display:grid;place-items:center;opacity:0;pointer-events:none;transition:opacity .18s linear;}
+[data-hk-odeme] > :not(.hk-od){transition:opacity .15s linear;}
+[data-hk-odeme].hk-yukleniyor > :not(.hk-od),[data-hk-odeme].hk-tamam > :not(.hk-od){opacity:0;}
+[data-hk-odeme].hk-yukleniyor .hk-od,[data-hk-odeme].hk-tamam .hk-od{opacity:1;}
+.hk-od .hk-don{width:20px;height:20px;border-radius:50%;border:2.5px solid currentColor;border-top-color:transparent;opacity:.9;animation:hk-don .7s linear infinite;}
+.hk-od .hk-tik{position:absolute;width:22px;height:22px;overflow:visible;opacity:0;}
+.hk-od .hk-tik path{fill:none;stroke:currentColor;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:24;stroke-dashoffset:24;}
+.hk-tamam .hk-od .hk-don{display:none;}
+.hk-tamam .hk-od .hk-tik{opacity:1;}
+.hk-tamam .hk-od .hk-tik path{animation:hk-tik .3s var(--hh-egri) forwards;}
+@keyframes hk-don{to{transform:rotate(360deg);}}
+@keyframes hk-tik{to{stroke-dashoffset:0;}}
+
+/* ---------- 5. Kinetik başlık (kelimeler sırayla yükselir; üst katman satır maskesi overflow:hidden olmalı) ---------- */
+html.js .hk-kin .lni{transform:none!important;transition:none!important;}
+.hk-kw{display:inline-block;transform-origin:0 100%;}
+html.js .hk-kin:not(.in) .hk-kw{transform:translate3d(0,108%,0) rotate(5deg);}
+html.js .hk-kin.in .hk-kw{transform:none;transition:transform .95s var(--hh-egri) calc(var(--hk-w,0)*75ms + var(--hk-s,0)*140ms);}
+
+/* ---------- 6. Kutlama çipi (konfeti sonrası, kapatılabilir) ---------- */
+.hk-kutlama{
+  position:fixed;left:16px;bottom:16px;z-index:10000;display:flex;align-items:center;gap:10px;max-width:calc(100vw - 32px);
+  padding:6px 8px 6px 14px;border-radius:999px;font:500 13px/1.3 system-ui,-apple-system,"Segoe UI",sans-serif;
+  background:var(--hk-zemin-3,#1E221F);color:var(--hk-metin,#E9EDE9);border:1px solid var(--hk-cizgi-guclu,#3B443E);
+  box-shadow:0 10px 30px rgba(0,0,0,.45);animation:hk-kutlama-gir .24s var(--hh-egri) backwards;
+}
+.hk-kutlama button{min-height:32px;padding:0 12px;border-radius:999px;border:1px solid var(--hk-cizgi-girdi,#66736A);background:transparent;color:inherit;font:inherit;font-weight:600;cursor:pointer;}
+.hk-kutlama button:hover{background:rgba(255,255,255,.08);}
+.hk-kutlama button:focus-visible{outline:2px solid var(--hh-fosfor);outline-offset:2px;}
+.hk-kutlama.cik{opacity:0;transform:translateY(6px);transition:opacity .2s linear,transform .2s linear;}
+@keyframes hk-kutlama-gir{from{opacity:0;transform:translateY(8px);}}
+.hk-konfeti{position:fixed;inset:0;z-index:9999;pointer-events:none;overflow:hidden;}
+.hk-konfeti>i{position:absolute;left:0;top:0;display:block;will-change:transform,opacity;}
+
+/* ---------- 7. Yardımcılar ---------- */
+.hk-sr{position:absolute!important;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0;}
+/* Parçacık → logo: hedef öğe kısa bir nabız alır (hareket.js WAAPI ile; burada yalnız taşıyıcı) */
+.hk-parcacik{position:fixed;inset:0;z-index:9998;pointer-events:none;overflow:hidden;}
+.hk-parcacik>i{position:absolute;left:0;top:0;width:5px;height:5px;margin:-2.5px 0 0 -2.5px;border-radius:50%;background:var(--hh-fosfor);box-shadow:0 0 8px var(--hh-fosfor);will-change:transform,opacity;}
+/* Kart küçük resmi eğimi: parlama katmanı yok, yalnız transform (hareket.js satır içi stil verir) */
+[data-hk-egim-hedef],.hk-egim-hedef{will-change:transform;}
+
+/* ---------- 8. Azaltılmış hareket: her şey anında son durumda; süsleme yok ---------- */
+@media (prefers-reduced-motion:reduce){
+  .hk-halka>i,.thumb:has(>.prog)::before,.thumb:has(>.prog)::after{animation:none;}
+  .hk-halka>i:nth-child(2){transform:rotate(120deg);}
+  .hk-halka>i:nth-child(3){transform:rotate(240deg);}
+  .hk-od .hk-don{animation:none;}
+  .hk-tamam .hk-od .hk-tik path{animation:none;stroke-dashoffset:0;}
+  html.js .hk-kin:not(.in) .hk-kw,html.js .hk-kin.in .hk-kw{transform:none;transition:none;}
+  .hk-kutlama{animation:none;}
+  .hk-konfeti,.hk-parcacik{display:none;}
+}
