@@ -14,10 +14,11 @@
    (tools/site-yayin-hazirla.sh, SATIS_ACIK = false iken yayın kopyasından mesafeli-satis ve refunds sayfalarını da çıkarır.) */
 (function () {
   'use strict';
-  var INDIRME_ACIK = false;
+  var INDIRME_ACIK = true;   // 16 Kasım 2026: Mac 0.1.0 imzalı + Apple onaylı; portal INDIR_MAC_URL tanımlı (kullanıcı "yayımla")
   var SATIS_ACIK = false; // true: Premium satın alma bağlantıları + iade/mesafeli satış bağlantıları görünür
-  var PORTAL_ADRESI = ''; // INDIRME_ACIK true olunca portalın adresi (örn. 'https://portal.hockeycut.com')
-  window.HA_AYAR = { PORTAL_ADRESI: PORTAL_ADRESI, INDIRME_ACIK: INDIRME_ACIK, SATIS_ACIK: SATIS_ACIK };
+  var PORTAL_ADRESI = 'https://portal.hockeycut.com'; // INDIRME_ACIK true iken portalın adresi
+  var BEKLEME_ACIK = false; // Windows bekleme listesi: portaldaki /bekleme sayfası vekilde kapalı → açık kipte de düğme gösterilmez (yoksa kullanıcı #download'a geri döner)
+  window.HA_AYAR = { PORTAL_ADRESI: PORTAL_ADRESI, INDIRME_ACIK: INDIRME_ACIK, SATIS_ACIK: SATIS_ACIK, BEKLEME_ACIK: BEKLEME_ACIK };
 
   var d = document;
   function kaldir(el) { if (el && el.parentNode) el.parentNode.removeChild(el); }
@@ -46,6 +47,7 @@
       var kok = PORTAL_ADRESI.replace(/\/+$/, '');
       d.querySelectorAll('a[data-portal]').forEach(function (a) { a.setAttribute('href', kok + a.getAttribute('data-portal')); });
       kaldir(d.getElementById('dlSoon'));
+      if (!BEKLEME_ACIK) { kaldir(d.querySelector('.wait')); windowsYok(); }   // Windows: bekleme listesi kapalıyken yalnız "henüz yok" bilgisi
       return;
     }
     // Kapalı kip: çalışmayan adrese giden hiçbir bağlantı kalmaz
@@ -57,7 +59,10 @@
       // Premium / kayıt: indirme bölümüne kaydır; ödeme geçiş animasyonu (data-hk-odeme) çalışmasın
       a.removeAttribute('data-portal'); a.removeAttribute('data-hk-odeme'); a.setAttribute('href', '#download');
     });
-    // SSS "hangi bilgisayar": "bekleme listesine katıl" cümlesi olmayan metin (tr/en çevirisi faq.a3k)
+    windowsYok();
+  }
+  // SSS "hangi bilgisayar": "bekleme listesine katıl" cümlesi olmayan metin (tr/en çevirisi faq.a3k)
+  function windowsYok() {
     var a3 = d.querySelector('[data-i18n="faq.a3"]');
     if (a3) { a3.setAttribute('data-i18n', 'faq.a3k'); a3.textContent = 'A Mac with Apple Silicon (M1 or newer). There is no Windows version yet.'; }
   }
