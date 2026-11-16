@@ -567,7 +567,8 @@
         </div>
         <div class="dl-field">
           <label class="dl-lbl" for="dlTakim" data-i18n="dl.takim">Your team</label>
-          <input id="dlTakim" name="takim" type="text" maxlength="80" autocomplete="organization" required data-i18n-ph="dl.takim.ph" placeholder="Team name" aria-describedby="dlLigMsg">
+          <input id="dlTakim" name="takim" type="text" maxlength="80" autocomplete="organization" required data-i18n-ph="dl.takim.ph" placeholder="Team name" aria-describedby="dlLigMsg" list="dlTakimListe">
+          <datalist id="dlTakimListe"></datalist><!-- KT-546: seçili ligin takımları (data/takimlar.json); yalnız öneri, elle yazmak serbest -->
         </div>
         <p class="dl-msg" id="dlLigMsg" role="status" aria-live="polite"></p>
       </div>

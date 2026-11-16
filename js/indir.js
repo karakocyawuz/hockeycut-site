@@ -1,5 +1,5 @@
 /* HockeyCut site v2 — e-postayla indirme bağlantısı formu (KT-512 §5).
-   POST {PORTAL_ADRESI}/api/indirme-istegi  {eposta, platform:"mac"|"win", riza:true, lig_kodu, lig_adi, takim} (KT-532; "win" 16 Kasım, js/ayar.js WINDOWS_ACIK)  → 200 {ok:true} (kayıtlı olsa da olmasa da aynı yanıt).
+   POST {PORTAL_ADRESI}/api/indirme-istegi  {eposta, platform:"mac"|"win", riza:true, lig_kodu, lig_adi, takim, dil} (KT-532; "win" 16 Kasım, js/ayar.js WINDOWS_ACIK)  → 200 {ok:true} (kayıtlı olsa da olmasa da aynı yanıt).
    Çerez/kimlik bilgisi gönderilmez (credentials: omit). Mesajlar aria-live alanına yazılır; metinler i18n sözlüğünden gelir. */
 (function () {
   'use strict';
@@ -69,7 +69,7 @@
     sending = true; btn.disabled = true; btn.setAttribute('aria-busy', 'true'); say('dl.sending', true);
     fetch(base + '/api/indirme-istegi', {
       method: 'POST', headers: { 'Content-Type': 'application/json' }, credentials: 'omit',
-      body: JSON.stringify({ eposta: addr, platform: plat, riza: true, lig_kodu: lig.kod, lig_adi: lig.ad, takim: tk })
+      body: JSON.stringify({ eposta: addr, platform: plat, riza: true, lig_kodu: lig.kod, lig_adi: lig.ad, takim: tk, dil: (w.HA_I18N && w.HA_I18N.lang) || 'en' })   // dil: e-posta Türkçe mi İngilizce mi (portal: tr dışı → en)
     }).then(function (r) {
       if (r.ok) { say('dl.ok', true); mail.value = ''; riza.checked = false; if (w.HA_LIG && w.HA_LIG.sifirla) w.HA_LIG.sifirla(); bildirim(); return; }   // kullanıcı 16 Kasım: alanlar boşalsın + açılır bildirim
       if (r.status === 429) say('dl.errMany');

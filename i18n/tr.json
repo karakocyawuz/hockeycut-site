@@ -268,5 +268,6 @@
   "pr.pro.noteW": "Apple Silicon’lu Mac’lerde ve Windows 10/11’de (64 bit) çalışır.",
   "end.subW": "E-posta adresinizi yazın, indirme bağlantısını size gönderelim.",
   "dl.noteW": "Bağlantı 72 saat geçerlidir.",
-  "faq.a3w": "Apple Silicon’lu (M1 veya daha yeni) bir Mac ya da Windows 10 veya 11 (64 bit) yüklü bir bilgisayar. Windows’ta ekran kartı varsa analiz daha hızlıdır; yoksa işlemcide çalışır ve daha uzun sürer."
+  "faq.a3w": "Apple Silicon’lu (M1 veya daha yeni) bir Mac ya da Windows 10 veya 11 (64 bit) yüklü bir bilgisayar. Windows’ta ekran kartı varsa analiz daha hızlıdır; yoksa işlemcide çalışır ve daha uzun sürer.",
+  "dl.takim.ph2": "Listeden seçin ya da takımınızı yazın"
 }

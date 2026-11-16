@@ -20,7 +20,9 @@
     Array.prototype.forEach.call(satirlar.querySelectorAll('.lg-row'), function (satir) {
       var g = d.createElement('optgroup'); g.label = satir.querySelector('.lg-ulke').textContent.trim();
       Array.prototype.forEach.call(satir.querySelectorAll('.lg-chip'), function (c) {
-        var o = d.createElement('option'); o.value = satir.getAttribute('data-lg'); o.textContent = c.textContent.trim().replace(/^\+\s*/, ''); g.appendChild(o);
+        var o = d.createElement('option'); o.value = satir.getAttribute('data-lg'); o.textContent = c.textContent.trim().replace(/^\+\s*/, '');
+        o.setAttribute('data-anahtar', satir.getAttribute('data-lg') + '|' + (c.getAttribute('data-i18n') || c.textContent.trim()));   // KT-546: takım listesi anahtarı (tools/kt546/takim-listesi.mjs ile aynı)
+        g.appendChild(o);
       });
       sel.appendChild(g);
     });
@@ -55,9 +57,31 @@
     if (st.durum === 'desteklenmiyor') sel.setAttribute('aria-invalid', 'true'); else sel.removeAttribute('aria-invalid');
     if (duyur !== false || st.durum !== 'yok') yaz(st.durum === 'secili' ? 'dl.lig.ok' : st.durum === 'desteklenmiyor' ? 'dl.lig.yok' : '', st.durum === 'secili' ? 'ok' : st.durum === 'desteklenmiyor' ? 'note' : '');
     box.setAttribute('data-durum', st.durum);
+    takimOnerisi(st.durum === 'secili' && o ? o.getAttribute('data-anahtar') : '');
     premiumBaglanti(); kilitIsareti();
     d.dispatchEvent(new CustomEvent('lig:degisti', { detail: { durum: st.durum, kod: st.kod, ad: st.ad } }));
   }
+  /* KT-546 (16 Kasım): lig seçilince o ligin takımları öneri listesine (datalist) gelir; liste yalnız öneridir, elle yazmak serbest.
+     Veri: data/takimlar.json (tools/kt546/takim-listesi.mjs üretir). Dosya yüklenemezse alan eskisi gibi düz metin kalır. */
+  var liste = d.getElementById('dlTakimListe'), veri = null, veriSozu = null, sonAnahtar = '';
+  function veriAl() {
+    if (!veriSozu) veriSozu = (w.fetch ? fetch('data/takimlar.json', { cache: 'no-cache' }).then(function (r) { return r.ok ? r.json() : null; }) : Promise.resolve(null))
+      .then(function (j) { veri = (j && j.takimlar) || {}; return veri; }, function () { veri = {}; return veri; });
+    return veriSozu;
+  }
+  function takimOnerisi(anahtar) {
+    sonAnahtar = anahtar || '';
+    if (!liste || !takim) return;
+    if (!sonAnahtar) { liste.innerHTML = ''; takim.setAttribute('placeholder', T('dl.takim.ph')); return; }
+    veriAl().then(function (v) {
+      if (anahtar !== sonAnahtar) return;   // bu arada başka lig seçildi
+      var adlar = (v && v[anahtar]) || [];
+      liste.innerHTML = '';
+      adlar.forEach(function (ad) { var op = d.createElement('option'); op.value = ad; liste.appendChild(op); });
+      takim.setAttribute('placeholder', T(adlar.length ? 'dl.takim.ph2' : 'dl.takim.ph'));
+    });
+  }
+  w.HA_TAKIM_ONERI = function () { return liste ? Array.prototype.map.call(liste.options, function (o) { return o.value; }) : []; };   // e2e
   sel.addEventListener('change', function () { guncelle(true); });
   /* gönderim başarılı olunca (indir.js): lig ve takım boşalır, "Bu ligde çalışıyoruz" satırı silinir; form yeniden lig seçimini bekler */
   st.sifirla = function () { sel.selectedIndex = 0; if (takim) { takim.value = ''; takim.removeAttribute('aria-invalid'); } guncelle(false); yaz('', ''); };

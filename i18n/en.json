@@ -268,5 +268,6 @@
   "pr.pro.noteW": "Runs on Macs with Apple Silicon and on Windows 10/11 (64-bit).",
   "end.subW": "Enter your e-mail and we send you the download link.",
   "dl.noteW": "The link works for 72 hours.",
-  "faq.a3w": "A Mac with Apple Silicon (M1 or newer), or a PC with Windows 10 or 11 (64-bit). On Windows the analysis is faster with a graphics card; without one it runs on the processor and takes longer."
+  "faq.a3w": "A Mac with Apple Silicon (M1 or newer), or a PC with Windows 10 or 11 (64-bit). On Windows the analysis is faster with a graphics card; without one it runs on the processor and takes longer.",
+  "dl.takim.ph2": "Choose from the list or type your team"
 }
