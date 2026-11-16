@@ -177,5 +177,17 @@
   "faq.a5k": "Gratuit : 2 matchs, disponible dès aujourd'hui. Après chaque match, vous répondez à ses candidats Oui/Non et le suivant s'ouvre. En échange, vos réponses et de courts clips nous sont envoyés pour l'entraînement du modèle. Premium n'est pas encore en vente.",
   "dl.okT": "Lien envoyé",
   "dl.okB": "Nous avons envoyé le lien de téléchargement à votre adresse e-mail. S'il n'arrive pas dans quelques minutes, vérifiez votre dossier de spam. Le lien est valable 72 heures.",
-  "dl.okKapat": "OK"
+  "dl.okKapat": "OK",
+  "dl.plat.q": "Votre ordinateur",
+  "dl.plat.macS": "Apple Silicon (M1 ou plus récent)",
+  "dl.plat.winS": "Windows 10 ou 11, 64 bits",
+  "dl.plat.winYok": "La version Windows n’est pas encore disponible. Pour l’instant, le téléchargement est réservé au Mac.",
+  "dl.plat.winUyari": "Si Windows affiche un avertissement à l’ouverture du programme d’installation, cliquez sur « Informations complémentaires », puis sur « Exécuter quand même ».",
+  "dl.plat.winSoon": "Bientôt",
+  "hero.meta3W": "Le match complet reste sur votre ordinateur",
+  "cta.dlW": "Télécharger",
+  "pr.pro.noteW": "Fonctionne sur les Mac Apple Silicon et sous Windows 10/11 (64 bits).",
+  "end.subW": "Saisissez votre adresse e-mail et nous vous envoyons le lien de téléchargement.",
+  "dl.noteW": "Le lien est valable 72 heures.",
+  "faq.a3w": "Un Mac Apple Silicon (M1 ou plus récent) ou un PC sous Windows 10 ou 11 (64 bits). Sous Windows, l’analyse est plus rapide avec une carte graphique ; sans elle, elle s’exécute sur le processeur et prend plus de temps."
 }

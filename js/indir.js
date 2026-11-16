@@ -1,5 +1,5 @@
 /* HockeyCut site v2 — e-postayla indirme bağlantısı formu (KT-512 §5).
-   POST {PORTAL_ADRESI}/api/indirme-istegi  {eposta, platform:"mac", riza:true, lig_kodu, lig_adi, takim} (KT-532)  → 200 {ok:true} (kayıtlı olsa da olmasa da aynı yanıt).
+   POST {PORTAL_ADRESI}/api/indirme-istegi  {eposta, platform:"mac"|"win", riza:true, lig_kodu, lig_adi, takim} (KT-532; "win" 16 Kasım, js/ayar.js WINDOWS_ACIK)  → 200 {ok:true} (kayıtlı olsa da olmasa da aynı yanıt).
    Çerez/kimlik bilgisi gönderilmez (credentials: omit). Mesajlar aria-live alanına yazılır; metinler i18n sözlüğünden gelir. */
 (function () {
   'use strict';
@@ -11,6 +11,28 @@
 
   function say(key, ok) { msg.textContent = T(key); msg.className = 'dl-msg ' + (ok ? 'ok' : 'err'); }
   function invalid(el, on) { if (on) el.setAttribute('aria-invalid', 'true'); else el.removeAttribute('aria-invalid'); }
+
+  /* 16 Kasım 2026: platform seçimi (Mac / Windows). Varsayılan ziyaretçinin işletim sistemi. Windows kapalıyken (WINDOWS_ACIK=false)
+     Windows seçilince "henüz yok" notu çıkar, lig sorusu ve form gizlenir (CSS: .plat-yok). Açıkken Windows seçilince SmartScreen notu (.plat-win). */
+  var WIN = !!(w.HA_AYAR && w.HA_AYAR.WINDOWS_ACIK), plat = 'mac';
+  var pk = d.getElementById('dlPlat'), kart = pk && (pk.closest('.end') || pk.parentNode);
+  function platSec(p, odak) {
+    if (!pk) return; plat = p;
+    pk.querySelectorAll('[data-plat]').forEach(function (b) { var on = b.getAttribute('data-plat') === p; b.setAttribute('aria-checked', on ? 'true' : 'false'); b.tabIndex = on ? 0 : -1; if (on && odak) b.focus(); });
+    kart.classList.toggle('plat-yok', p === 'win' && !WIN); kart.classList.toggle('plat-win', p === 'win' && WIN);
+    if (msg.textContent && !sending) { msg.textContent = ''; msg.className = 'dl-msg'; }
+  }
+  if (pk) {
+    if (!WIN) { var ws = d.getElementById('dlPlatWinS'); if (ws) { ws.setAttribute('data-i18n', 'dl.plat.winSoon'); ws.textContent = 'Coming soon'; } }
+    pk.addEventListener('click', function (e) { var b = e.target.closest('[data-plat]'); if (b) platSec(b.getAttribute('data-plat'), false); });
+    pk.addEventListener('keydown', function (e) {   // radyo grubu: oklar seçimi değiştirir
+      if (['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'].indexOf(e.key) < 0 || !e.target.closest('[data-plat]')) return;
+      e.preventDefault(); platSec(plat === 'mac' ? 'win' : 'mac', true);
+    });
+    var ua = (w.navigator.userAgentData && w.navigator.userAgentData.platform) || w.navigator.userAgent || '';
+    platSec(/Windows/i.test(ua) ? 'win' : 'mac', false);
+  }
+  w.HA_INDIR_PLATFORM = function () { return plat; };   // e2e
 
   /* Başarı bildirimi: ortada açılan pencere (<dialog>, odak düğmede, Esc / Tamam / dışarı tık kapatır; kapanınca odak lig sorusuna döner) */
   var dlg = null;
@@ -34,6 +56,7 @@
   w.HA_INDIR_BILDIRIM = bildirim;   // e2e
   form.addEventListener('submit', function (e) {
     e.preventDefault(); if (sending) return;
+    if (plat === 'win' && !WIN) { say('dl.plat.winYok'); return; }   // Windows kapalı: form zaten gizli; yine de istek gitmez
     var addr = mail.value.trim();
     invalid(mail, false); invalid(riza, false);
     // KT-532: önce lig sorusu — listedeki bir lig seçilmeden ve takım yazılmadan istek gitmez
@@ -46,11 +69,11 @@
     sending = true; btn.disabled = true; btn.setAttribute('aria-busy', 'true'); say('dl.sending', true);
     fetch(base + '/api/indirme-istegi', {
       method: 'POST', headers: { 'Content-Type': 'application/json' }, credentials: 'omit',
-      body: JSON.stringify({ eposta: addr, platform: 'mac', riza: true, lig_kodu: lig.kod, lig_adi: lig.ad, takim: tk })
+      body: JSON.stringify({ eposta: addr, platform: plat, riza: true, lig_kodu: lig.kod, lig_adi: lig.ad, takim: tk })
     }).then(function (r) {
       if (r.ok) { say('dl.ok', true); mail.value = ''; riza.checked = false; if (w.HA_LIG && w.HA_LIG.sifirla) w.HA_LIG.sifirla(); bildirim(); return; }   // kullanıcı 16 Kasım: alanlar boşalsın + açılır bildirim
       if (r.status === 429) say('dl.errMany');
-      else if (r.status === 400) return r.json().then(function (j) { say(j && j.hata === 'lig_desteklenmiyor' ? 'dl.lig.yok' : 'dl.errBad'); }, function () { say('dl.errBad'); });
+      else if (r.status === 400) return r.json().then(function (j) { say(j && j.hata === 'lig_desteklenmiyor' ? 'dl.lig.yok' : j && j.hata === 'platform_hazir_degil' ? 'dl.plat.winYok' : 'dl.errBad'); }, function () { say('dl.errBad'); });
       else say('dl.errNet');
     }).catch(function () { say('dl.errNet'); }).then(function () { sending = false; btn.disabled = false; btn.removeAttribute('aria-busy'); });
   });

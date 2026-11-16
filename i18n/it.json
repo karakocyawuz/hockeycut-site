@@ -177,5 +177,17 @@
   "faq.a5k": "Gratuito: 2 partite, disponibile da oggi. Dopo ogni partita rispondi ai suoi candidati Sì/No e si apre la successiva. In cambio, le tue risposte e brevi clip ci vengono inviate per l'addestramento del modello. Premium non è ancora in vendita.",
   "dl.okT": "Link inviato",
   "dl.okB": "Abbiamo inviato il link per il download al tuo indirizzo e-mail. Se non arriva entro pochi minuti, controlla la cartella spam. Il link è valido per 72 ore.",
-  "dl.okKapat": "OK"
+  "dl.okKapat": "OK",
+  "dl.plat.q": "Il tuo computer",
+  "dl.plat.macS": "Apple Silicon (M1 o successivo)",
+  "dl.plat.winS": "Windows 10 o 11, 64 bit",
+  "dl.plat.winYok": "La versione per Windows non è ancora disponibile. Per ora il download è solo per Mac.",
+  "dl.plat.winUyari": "Se Windows mostra un avviso all’apertura del programma di installazione, fai clic su «Ulteriori informazioni» e poi su «Esegui comunque».",
+  "dl.plat.winSoon": "In arrivo",
+  "hero.meta3W": "La partita intera resta sul tuo computer",
+  "cta.dlW": "Scarica",
+  "pr.pro.noteW": "Funziona sui Mac con Apple Silicon e su Windows 10/11 (64 bit).",
+  "end.subW": "Inserisci la tua e-mail e ti inviamo il link per il download.",
+  "dl.noteW": "Il link è valido 72 ore.",
+  "faq.a3w": "Un Mac con Apple Silicon (M1 o successivo) oppure un PC con Windows 10 o 11 (64 bit). Su Windows l’analisi è più veloce con una scheda grafica; senza, viene eseguita sul processore e richiede più tempo."
 }

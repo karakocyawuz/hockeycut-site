@@ -119,5 +119,12 @@
   "faq.a5k": "Zdarma: 2 zápasy, dostupné již dnes. Po každém zápase odpovíte na jeho kandidáty Ano/Ne a otevře se další. Na oplátku nám jsou vaše odpovědi a krátké klipy odeslány k trénování modelu. Premium se zatím neprodává.",
   "dl.okT": "Odkaz odeslán",
   "dl.okB": "Odkaz ke stažení jsme poslali na vaši e-mailovou adresu. Pokud nedorazí během několika minut, podívejte se do složky se spamem. Odkaz platí 72 hodin.",
-  "dl.okKapat": "OK"
+  "dl.okKapat": "OK",
+  "dl.plat.q": "Váš počítač",
+  "dl.plat.macS": "Apple Silicon (M1 nebo novější)",
+  "dl.plat.winS": "Windows 10 nebo 11, 64bitový",
+  "dl.plat.winYok": "Verze pro Windows zatím není k dispozici. Zatím lze stáhnout jen verzi pro Mac.",
+  "dl.plat.winUyari": "Pokud Windows při otevření instalačního programu zobrazí varování, klikněte na „Další informace“ a potom na „Přesto spustit“.",
+  "dl.plat.winSoon": "Již brzy",
+  "faq.a3w": "Mac s Apple Silicon (M1 nebo novější) nebo počítač s Windows 10 nebo 11 (64bitový). Ve Windows je analýza rychlejší s grafickou kartou; bez ní běží na procesoru a trvá déle."
 }

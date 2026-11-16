@@ -119,5 +119,12 @@
   "faq.a5k": "Besplatno: 2 utakmice, dostupno već danas. Nakon svake utakmice odgovarate na njezine kandidate Da/Ne i otvara se sljedeća. Zauzvrat nam se šalju vaši odgovori i kratki klipovi za treniranje modela. Premium još nije u prodaji.",
   "dl.okT": "Poveznica poslana",
   "dl.okB": "Poveznicu za preuzimanje poslali smo na vašu adresu e-pošte. Ako ne stigne za nekoliko minuta, provjerite mapu neželjene pošte. Poveznica vrijedi 72 sata.",
-  "dl.okKapat": "U redu"
+  "dl.okKapat": "U redu",
+  "dl.plat.q": "Vaše računalo",
+  "dl.plat.macS": "Apple Silicon (M1 ili noviji)",
+  "dl.plat.winS": "Windows 10 ili 11, 64-bitni",
+  "dl.plat.winYok": "Verzija za Windows još nije dostupna. Zasad se može preuzeti samo verzija za Mac.",
+  "dl.plat.winUyari": "Ako Windows pri otvaranju instalacijskog programa prikaže upozorenje, kliknite „Dodatne informacije”, a zatim „Svejedno pokreni”.",
+  "dl.plat.winSoon": "Uskoro",
+  "faq.a3w": "Mac s Apple Siliconom (M1 ili noviji) ili računalo sa sustavom Windows 10 ili 11 (64-bitni). Na Windowsu je analiza brža s grafičkom karticom; bez nje radi na procesoru i traje dulje."
 }

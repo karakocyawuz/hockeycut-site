@@ -255,5 +255,18 @@
   "faq.a5k": "Free: 2 games, available today. After each game you answer its Yes/No candidates and the next one opens. In return, your answers and short clips are sent to us for model training. Premium is not on sale yet.",
   "dl.okT": "Link sent",
   "dl.okB": "We have sent the download link to your e-mail address. If it does not arrive within a few minutes, please check your spam folder. The link is valid for 72 hours.",
-  "dl.okKapat": "OK"
+  "dl.okKapat": "OK",
+  "dl.plat.q": "Your computer",
+  "dl.plat.macS": "Apple Silicon (M1 or newer)",
+  "dl.plat.winS": "Windows 10 or 11, 64-bit",
+  "dl.plat.winYok": "The Windows version is not available yet. For now the download is for Mac only.",
+  "dl.plat.winUyari": "Windows may show a warning when you open the installer: click “More info”, then “Run anyway”.",
+  "dl.plat.winSoon": "Coming soon",
+  "hero.eyebrowW": "Video analysis for ice hockey · runs on Mac and Windows",
+  "hero.meta3W": "The full game stays on your computer",
+  "cta.dlW": "Download",
+  "pr.pro.noteW": "Runs on Macs with Apple Silicon and on Windows 10/11 (64-bit).",
+  "end.subW": "Enter your e-mail and we send you the download link.",
+  "dl.noteW": "The link works for 72 hours.",
+  "faq.a3w": "A Mac with Apple Silicon (M1 or newer), or a PC with Windows 10 or 11 (64-bit). On Windows the analysis is faster with a graphics card; without one it runs on the processor and takes longer."
 }

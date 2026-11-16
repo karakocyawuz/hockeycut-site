@@ -119,5 +119,12 @@
   "faq.a5k": "Brezplačno: 2 tekmi, na voljo že danes. Po vsaki tekmi odgovorite na njene kandidate Da/Ne in odpre se naslednja. V zameno nam pošljete svoje odgovore in kratke posnetke za učenje modela. Premium še ni naprodaj.",
   "dl.okT": "Povezava poslana",
   "dl.okB": "Povezavo za prenos smo poslali na vaš e-poštni naslov. Če ne prispe v nekaj minutah, preverite mapo z vsiljeno pošto. Povezava velja 72 ur.",
-  "dl.okKapat": "V redu"
+  "dl.okKapat": "V redu",
+  "dl.plat.q": "Vaš računalnik",
+  "dl.plat.macS": "Apple Silicon (M1 ali novejši)",
+  "dl.plat.winS": "Windows 10 ali 11, 64-bitni",
+  "dl.plat.winYok": "Različica za Windows še ni na voljo. Zaenkrat je na voljo le prenos za Mac.",
+  "dl.plat.winUyari": "Če Windows ob odpiranju namestitvenega programa prikaže opozorilo, kliknite »Več informacij« in nato »Vseeno zaženi«.",
+  "dl.plat.winSoon": "Kmalu",
+  "faq.a3w": "Mac z Apple Silicon (M1 ali novejši) ali računalnik z Windows 10 ali 11 (64-bitni). V sistemu Windows je analiza hitrejša z grafično kartico; brez nje teče na procesorju in traja dlje."
 }

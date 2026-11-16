@@ -177,5 +177,17 @@
   "faq.a5k": "Kostenlos: 2 Spiele, heute nutzbar. Nach jedem Spiel beantwortest du die Ja/Nein-Kandidaten, danach öffnet sich das nächste. Im Gegenzug werden deine Antworten und kurze Clips für das Modelltraining an uns gesendet. Premium ist noch nicht im Verkauf.",
   "dl.okT": "Link gesendet",
   "dl.okB": "Wir haben den Download-Link an Ihre E-Mail-Adresse gesendet. Falls er nicht innerhalb weniger Minuten ankommt, sehen Sie bitte im Spam-Ordner nach. Der Link ist 72 Stunden gültig.",
-  "dl.okKapat": "OK"
+  "dl.okKapat": "OK",
+  "dl.plat.q": "Ihr Computer",
+  "dl.plat.macS": "Apple Silicon (M1 oder neuer)",
+  "dl.plat.winS": "Windows 10 oder 11, 64 Bit",
+  "dl.plat.winYok": "Die Windows-Version ist noch nicht verfügbar. Vorerst gibt es den Download nur für Mac.",
+  "dl.plat.winUyari": "Falls Windows beim Öffnen des Installers warnt: auf „Weitere Informationen“ und dann auf „Trotzdem ausführen“ klicken.",
+  "dl.plat.winSoon": "Bald verfügbar",
+  "hero.meta3W": "Das ganze Spiel bleibt auf Ihrem Computer",
+  "cta.dlW": "Herunterladen",
+  "pr.pro.noteW": "Läuft auf Macs mit Apple Silicon und unter Windows 10/11 (64 Bit).",
+  "end.subW": "Geben Sie Ihre E-Mail-Adresse ein, wir senden Ihnen den Download-Link.",
+  "dl.noteW": "Der Link gilt 72 Stunden.",
+  "faq.a3w": "Ein Mac mit Apple Silicon (M1 oder neuer) oder ein PC mit Windows 10 oder 11 (64 Bit). Unter Windows ist die Analyse mit einer Grafikkarte schneller; ohne läuft sie auf dem Prozessor und dauert länger."
 }

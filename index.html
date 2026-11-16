@@ -5,11 +5,11 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; font-src 'self'; connect-src 'self' https://portal.hockeycut.com; base-uri 'self'; form-action 'self' https://portal.hockeycut.com">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>HockeyCut — AI game breakdown for ice hockey, on your Mac</title>
-<meta name="description" content="Add the recorded game: HockeyCut analyzes it on your Mac and lists goals, power plays and penalty kills, faceoffs, zone entries and D-zone exits as clips. Shots and turnovers come as candidates you confirm with Yes or No. The analysis runs on your Mac. Mac first, Windows waitlist.">
+<title>HockeyCut — AI game breakdown for ice hockey, on Mac and Windows</title>
+<meta name="description" content="Add the recorded game: HockeyCut analyzes it on your Mac and lists goals, power plays and penalty kills, faceoffs, zone entries and D-zone exits as clips. Shots and turnovers come as candidates you confirm with Yes or No. The analysis runs on your own computer: Mac or Windows.">
 <meta name="theme-color" content="#07090a">
 <meta property="og:title" content="HockeyCut — Stop cutting games by hand.">
-<meta property="og:description" content="HockeyCut lists the events of your recorded hockey game as clips. Shots and turnovers come as candidates you confirm. Runs on your Mac.">
+<meta property="og:description" content="HockeyCut lists the events of your recorded hockey game as clips. Shots and turnovers come as candidates you confirm. Runs on Mac and Windows.">
 <meta property="og:type" content="website">
 <link rel="canonical" href="https://hockeycut.com/">
 <meta property="og:url" content="https://hockeycut.com/">
@@ -549,6 +549,16 @@
     <div class="end glass">
       <div class="end-glow" aria-hidden="true"></div>
       <h2 id="end-title"><span data-i18n="end.title1">Your next game,</span> <span data-i18n="end.title2">already cut into clips.</span></h2>
+      <!-- 16 Kasım 2026: platform seçimi (Mac / Windows). Windows yalnız js/ayar.js WINDOWS_ACIK=true iken indirilir; kapalıyken "yakında" notu, form gizlenir. Varsayılan: ziyaretçinin işletim sistemi. -->
+      <div class="dl-plat" id="dlPlat">
+        <p class="dl-lbl" id="dlPlatL" data-i18n="dl.plat.q">Your computer</p>
+        <div class="dl-plat-row" role="radiogroup" aria-labelledby="dlPlatL">
+          <button type="button" class="dl-plat-b" role="radio" aria-checked="true" data-plat="mac"><b>Mac</b><small data-i18n="dl.plat.macS">Apple Silicon (M1 or newer)</small></button>
+          <button type="button" class="dl-plat-b" role="radio" aria-checked="false" tabindex="-1" data-plat="win"><b>Windows</b><small id="dlPlatWinS" data-i18n="dl.plat.winS">Windows 10 or 11, 64-bit</small></button>
+        </div>
+        <p class="dl-msg note dl-plat-not" id="dlPlatYok" data-i18n="dl.plat.winYok">The Windows version is not available yet. For now the download is for Mac only.</p>
+        <p class="dl-msg note dl-plat-not" id="dlPlatUyari" data-i18n="dl.plat.winUyari">Windows may show a warning when you open the installer: click “More info”, then “Run anyway”.</p>
+      </div>
       <!-- KT-532: lig kapısı. Seçenekler #lgRows satırlarından js/lig.js ile üretilir (ikinci liste YOK). Seçim: listedeki lig → akış sürer; "listede yok" → form ve Premium/İndir kilitli. Kapalı kipte de görünür. -->
       <div class="dl-lig" id="dlLigBox">
         <div class="dl-field">

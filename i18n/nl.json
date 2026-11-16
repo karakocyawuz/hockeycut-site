@@ -177,5 +177,17 @@
   "faq.a5k": "Gratis: 2 wedstrijden, vandaag beschikbaar. Na elke wedstrijd beantwoord je de ja/nee-kandidaten en gaat de volgende open. In ruil daarvoor sturen we je antwoorden en korte clips naar ons voor modeltraining. Premium is nog niet te koop.",
   "dl.okT": "Link verzonden",
   "dl.okB": "We hebben de downloadlink naar je e-mailadres gestuurd. Komt hij niet binnen een paar minuten aan, kijk dan in je spammap. De link is 72 uur geldig.",
-  "dl.okKapat": "OK"
+  "dl.okKapat": "OK",
+  "dl.plat.q": "Je computer",
+  "dl.plat.macS": "Apple Silicon (M1 of nieuwer)",
+  "dl.plat.winS": "Windows 10 of 11, 64-bit",
+  "dl.plat.winYok": "De Windows-versie is nog niet beschikbaar. Voorlopig is de download alleen voor Mac.",
+  "dl.plat.winUyari": "Geeft Windows een waarschuwing bij het openen van het installatieprogramma? Klik op ‘Meer informatie’ en daarna op ‘Toch uitvoeren’.",
+  "dl.plat.winSoon": "Binnenkort",
+  "hero.meta3W": "De hele wedstrijd blijft op je computer",
+  "cta.dlW": "Downloaden",
+  "pr.pro.noteW": "Werkt op Macs met Apple Silicon en op Windows 10/11 (64-bit).",
+  "end.subW": "Vul je e-mailadres in en wij sturen je de downloadlink.",
+  "dl.noteW": "De link is 72 uur geldig.",
+  "faq.a3w": "Een Mac met Apple Silicon (M1 of nieuwer) of een pc met Windows 10 of 11 (64-bit). Op Windows is de analyse sneller met een videokaart; zonder draait ze op de processor en duurt het langer."
 }
