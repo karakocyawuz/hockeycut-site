@@ -5,7 +5,7 @@
 (function () {
   'use strict';
   var READY = ['en', 'tr', 'de', 'ru', 'es', 'fr', 'it', 'nl', 'cs', 'sk', 'sl', 'hr', 'bg', 'zh', 'ko', 'ja']; // çevirisi tamamlanan dil kodları (dil menüsünde etkin olur)
-  var BETA = ['bg', 'ko', 'hr', 'sl', 'sk', 'zh']; // ana dil konuşan kontrolü bekleyen diller: menüde "beta" etiketi
+  var BETA = []; // 16 Kasım 2026: 16 dilin hepsi tam (kullanıcı "onlarda olsun"); ana dil kontrolü gerekirse dil kodu buraya yazılır → menüde "beta" etiketi
   var RTL = ['ar', 'he', 'fa'];
 
   // Dinamik (JS ile üretilen) metinlerin İngilizce varsayılanları
