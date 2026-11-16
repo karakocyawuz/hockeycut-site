@@ -12,6 +12,26 @@
   function say(key, ok) { msg.textContent = T(key); msg.className = 'dl-msg ' + (ok ? 'ok' : 'err'); }
   function invalid(el, on) { if (on) el.setAttribute('aria-invalid', 'true'); else el.removeAttribute('aria-invalid'); }
 
+  /* Başarı bildirimi: ortada açılan pencere (<dialog>, odak düğmede, Esc / Tamam / dışarı tık kapatır; kapanınca odak lig sorusuna döner) */
+  var dlg = null;
+  function bildirim() {
+    if (!dlg) {
+      dlg = d.createElement('dialog'); dlg.className = 'hk-bildirim'; dlg.id = 'dlBildirim'; dlg.setAttribute('aria-labelledby', 'dlBildirimT'); dlg.setAttribute('aria-describedby', 'dlBildirimB');
+      var ic = d.createElement('div'); ic.className = 'hk-bildirim-ic';
+      var ik = d.createElement('div'); ik.className = 'hk-bildirim-ikon'; ik.setAttribute('aria-hidden', 'true'); ik.textContent = '\u2713';
+      var h = d.createElement('h2'); h.id = 'dlBildirimT'; h.setAttribute('data-i18n', 'dl.okT');
+      var b = d.createElement('p'); b.id = 'dlBildirimB'; b.setAttribute('data-i18n', 'dl.okB');
+      var k = d.createElement('button'); k.type = 'button'; k.className = 'btn btn-primary'; k.setAttribute('data-i18n', 'dl.okKapat');
+      k.addEventListener('click', function () { dlg.close(); });
+      dlg.addEventListener('click', function (e) { if (e.target === dlg) dlg.close(); });   // pencere dışına tık
+      dlg.addEventListener('close', function () { var ls = d.getElementById('dlLig'); if (ls) { try { ls.focus({ preventScroll: true }); } catch (x) { ls.focus(); } } });
+      ic.appendChild(ik); ic.appendChild(h); ic.appendChild(b); ic.appendChild(k); dlg.appendChild(ic); d.body.appendChild(dlg);
+    }
+    dlg.querySelectorAll('[data-i18n]').forEach(function (el) { el.textContent = T(el.getAttribute('data-i18n')); });
+    if (typeof dlg.showModal === 'function') { if (!dlg.open) dlg.showModal(); } else dlg.setAttribute('open', '');
+    var kb = dlg.querySelector('button'); if (kb) kb.focus();
+  }
+  w.HA_INDIR_BILDIRIM = bildirim;   // e2e
   form.addEventListener('submit', function (e) {
     e.preventDefault(); if (sending) return;
     var addr = mail.value.trim();
@@ -28,7 +48,7 @@
       method: 'POST', headers: { 'Content-Type': 'application/json' }, credentials: 'omit',
       body: JSON.stringify({ eposta: addr, platform: 'mac', riza: true, lig_kodu: lig.kod, lig_adi: lig.ad, takim: tk })
     }).then(function (r) {
-      if (r.ok) { say('dl.ok', true); mail.value = ''; riza.checked = false; return; }
+      if (r.ok) { say('dl.ok', true); mail.value = ''; riza.checked = false; if (w.HA_LIG && w.HA_LIG.sifirla) w.HA_LIG.sifirla(); bildirim(); return; }   // kullanıcı 16 Kasım: alanlar boşalsın + açılır bildirim
       if (r.status === 429) say('dl.errMany');
       else if (r.status === 400) return r.json().then(function (j) { say(j && j.hata === 'lig_desteklenmiyor' ? 'dl.lig.yok' : 'dl.errBad'); }, function () { say('dl.errBad'); });
       else say('dl.errNet');

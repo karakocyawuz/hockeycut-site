@@ -116,5 +116,8 @@
   "lg.c.lt": "Litva",
   "lg.c.us": "SAD",
   "pr.pro.soon": "Uskoro",
-  "faq.a5k": "Besplatno: 2 utakmice, dostupno već danas. Nakon svake utakmice odgovarate na njezine kandidate Da/Ne i otvara se sljedeća. Zauzvrat nam se šalju vaši odgovori i kratki klipovi za treniranje modela. Premium još nije u prodaji."
+  "faq.a5k": "Besplatno: 2 utakmice, dostupno već danas. Nakon svake utakmice odgovarate na njezine kandidate Da/Ne i otvara se sljedeća. Zauzvrat nam se šalju vaši odgovori i kratki klipovi za treniranje modela. Premium još nije u prodaji.",
+  "dl.okT": "Poveznica poslana",
+  "dl.okB": "Poveznicu za preuzimanje poslali smo na vašu adresu e-pošte. Ako ne stigne za nekoliko minuta, provjerite mapu neželjene pošte. Poveznica vrijedi 72 sata.",
+  "dl.okKapat": "U redu"
 }

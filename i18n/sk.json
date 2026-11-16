@@ -116,5 +116,8 @@
   "lg.c.lt": "Litva",
   "lg.c.us": "USA",
   "pr.pro.soon": "Už čoskoro",
-  "faq.a5k": "Zadarmo: 2 zápasy, dostupné už dnes. Po každom zápase odpoviete na jeho kandidátov Áno/Nie a otvorí sa ďalší. Na oplátku nám sú vaše odpovede a krátke klipy odoslané na trénovanie modelu. Premium sa zatiaľ nepredáva."
+  "faq.a5k": "Zadarmo: 2 zápasy, dostupné už dnes. Po každom zápase odpoviete na jeho kandidátov Áno/Nie a otvorí sa ďalší. Na oplátku nám sú vaše odpovede a krátke klipy odoslané na trénovanie modelu. Premium sa zatiaľ nepredáva.",
+  "dl.okT": "Odkaz odoslaný",
+  "dl.okB": "Odkaz na stiahnutie sme poslali na vašu e-mailovú adresu. Ak nepríde do niekoľkých minút, pozrite sa do priečinka so spamom. Odkaz platí 72 hodín.",
+  "dl.okKapat": "OK"
 }

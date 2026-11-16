@@ -116,5 +116,8 @@
   "lg.c.lt": "Litva",
   "lg.c.us": "ZDA",
   "pr.pro.soon": "Kmalu",
-  "faq.a5k": "Brezplačno: 2 tekmi, na voljo že danes. Po vsaki tekmi odgovorite na njene kandidate Da/Ne in odpre se naslednja. V zameno nam pošljete svoje odgovore in kratke posnetke za učenje modela. Premium še ni naprodaj."
+  "faq.a5k": "Brezplačno: 2 tekmi, na voljo že danes. Po vsaki tekmi odgovorite na njene kandidate Da/Ne in odpre se naslednja. V zameno nam pošljete svoje odgovore in kratke posnetke za učenje modela. Premium še ni naprodaj.",
+  "dl.okT": "Povezava poslana",
+  "dl.okB": "Povezavo za prenos smo poslali na vaš e-poštni naslov. Če ne prispe v nekaj minutah, preverite mapo z vsiljeno pošto. Povezava velja 72 ur.",
+  "dl.okKapat": "V redu"
 }

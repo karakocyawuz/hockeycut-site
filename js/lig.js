@@ -59,6 +59,8 @@
     d.dispatchEvent(new CustomEvent('lig:degisti', { detail: { durum: st.durum, kod: st.kod, ad: st.ad } }));
   }
   sel.addEventListener('change', function () { guncelle(true); });
+  /* gönderim başarılı olunca (indir.js): lig ve takım boşalır, "Bu ligde çalışıyoruz" satırı silinir; form yeniden lig seçimini bekler */
+  st.sifirla = function () { sel.selectedIndex = 0; if (takim) { takim.value = ''; takim.removeAttribute('aria-invalid'); } guncelle(false); yaz('', ''); };
 
   // Lig sorusuna götür: kaydır + seç kutusuna odaklan (hareket azaltma tercihine uyar)
   var azalt = w.matchMedia && w.matchMedia('(prefers-reduced-motion: reduce)').matches;

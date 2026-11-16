@@ -252,5 +252,8 @@
   "dl.errLigSec": "Önce ligi seçin.",
   "dl.errTakim": "Lütfen takım adınızı yazın (en az 2 karakter).",
   "pr.pro.soon": "Yakında",
-  "faq.a5k": "Ücretsiz: 2 maç, bugün kullanılabilir. Her maçtan sonra adayları cevaplarsınız, sonraki maç açılır. Karşılığında cevaplarınız ve kısa klipler model eğitimi için bize gönderilir. Premium henüz satışta değil."
+  "faq.a5k": "Ücretsiz: 2 maç, bugün kullanılabilir. Her maçtan sonra adayları cevaplarsınız, sonraki maç açılır. Karşılığında cevaplarınız ve kısa klipler model eğitimi için bize gönderilir. Premium henüz satışta değil.",
+  "dl.okT": "Bağlantı gönderildi",
+  "dl.okB": "İndirme bağlantısını e-posta adresinize gönderdik. Birkaç dakika içinde gelmezse gereksiz (spam) klasörüne de bakın. Bağlantı 72 saat geçerlidir.",
+  "dl.okKapat": "Tamam"
 }

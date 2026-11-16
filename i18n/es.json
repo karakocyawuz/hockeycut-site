@@ -174,5 +174,8 @@
   "lg.c.lt": "Lituania",
   "lg.c.us": "Estados Unidos",
   "pr.pro.soon": "Próximamente",
-  "faq.a5k": "Gratis: 2 partidos, disponible hoy. Tras cada partido respondes a sus candidatos Sí/No y se abre el siguiente. A cambio, tus respuestas y clips cortos se nos envían para entrenar el modelo. Premium aún no está a la venta."
+  "faq.a5k": "Gratis: 2 partidos, disponible hoy. Tras cada partido respondes a sus candidatos Sí/No y se abre el siguiente. A cambio, tus respuestas y clips cortos se nos envían para entrenar el modelo. Premium aún no está a la venta.",
+  "dl.okT": "Enlace enviado",
+  "dl.okB": "Hemos enviado el enlace de descarga a tu correo electrónico. Si no llega en unos minutos, revisa la carpeta de spam. El enlace es válido durante 72 horas.",
+  "dl.okKapat": "Aceptar"
 }

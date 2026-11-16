@@ -34,7 +34,8 @@
     'dl.lig.ph': 'Select your league', 'dl.lig.none': 'My league is not listed', 'dl.lig.ok': 'We work with this league.',
     'dl.lig.yok': "We can't serve this league yet. HockeyCut works with the league's official game sheet; more leagues are being added.",
     'dl.lig.sec': 'Please choose your league first.', 'dl.errLigSec': 'Please choose your league first.', 'dl.errTakim': 'Please enter your team name (at least 2 characters).',
-    'dl.errMany': 'Too many requests. Please try again in a little while.', 'dl.errNet': 'We could not reach the server. Please try again later.'
+    'dl.errMany': 'Too many requests. Please try again in a little while.', 'dl.errNet': 'We could not reach the server. Please try again later.',
+    'dl.okT': 'Link sent', 'dl.okB': 'We have sent the download link to your e-mail address. If it does not arrive within a few minutes, please check your spam folder. The link is valid for 72 hours.', 'dl.okKapat': 'OK'
   };
   var dict = {};
 
