@@ -250,5 +250,7 @@
   "dl.lig.yok": "We can't serve this league yet. HockeyCut works with the league's official game sheet; more leagues are being added.",
   "dl.lig.sec": "Please choose your league first.",
   "dl.errLigSec": "Please choose your league first.",
-  "dl.errTakim": "Please enter your team name (at least 2 characters)."
+  "dl.errTakim": "Please enter your team name (at least 2 characters).",
+  "pr.pro.soon": "Coming soon",
+  "faq.a5k": "Free: 2 games, available today. After each game you answer its Yes/No candidates and the next one opens. In return, your answers and short clips are sent to us for model training. Premium is not on sale yet."
 }

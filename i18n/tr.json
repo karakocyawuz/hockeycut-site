@@ -250,5 +250,7 @@
   "dl.lig.yok": "Bu lige şu an hizmet veremiyoruz. HockeyCut, ligin resmî maç kâğıdıyla çalışır; yeni ligler ekleniyor.",
   "dl.lig.sec": "Önce ligi seçin.",
   "dl.errLigSec": "Önce ligi seçin.",
-  "dl.errTakim": "Lütfen takım adınızı yazın (en az 2 karakter)."
+  "dl.errTakim": "Lütfen takım adınızı yazın (en az 2 karakter).",
+  "pr.pro.soon": "Yakında",
+  "faq.a5k": "Ücretsiz: 2 maç, bugün kullanılabilir. Her maçtan sonra adayları cevaplarsınız, sonraki maç açılır. Karşılığında cevaplarınız ve kısa klipler model eğitimi için bize gönderilir. Premium henüz satışta değil."
 }
