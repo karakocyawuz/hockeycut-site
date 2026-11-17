@@ -79,10 +79,11 @@
     turn: [['h', 'P1 07:19', '0:09'], ['a', 'P2 02:33', '0:08'], ['h', 'P3 11:40', '0:08']],
     shot: [['h', 'P1 02:47', '0:10'], ['h', 'P1 08:30', '0:12'], ['a', 'P1 11:05', '0:09'], ['h', 'P2 03:19', '0:11'], ['a', 'P2 09:52', '0:10'], ['h', 'P3 06:14', '0:12']],
     faceoff: [['h', 'P1 00:00', '0:08', 'js.z.c'], ['h', 'P1 06:41', '0:12', 'js.z.oz'], ['a', 'P2 01:58', '0:07', 'js.z.dz'], ['h', 'P2 10:33', '0:06', 'js.z.nz'], ['a', 'P3 04:05', '0:09', 'js.z.nz']],
-    pp: [['h', 'P2 15:20', '2:00', ['5v4', 'js.pp']], ['h', 'P2 17:31', '1:46', ['4v5', 'js.pk']], ['h', 'P3 08:02', '0:40', ['5v3', 'js.pp']]],
+    pp: [['h', 'P2 15:20', '2:00', ['5v4', 'js.pp']], ['h', 'P2 17:31', '1:46', ['4v5', 'js.pk']], ['h', 'P3 08:02', '0:40', ['5v4', 'js.pp']]], // sahne tek cezalı (5'e 4) çizer: 5'e 3 demo klibi kaldırıldı
     entry: [['h', 'P1 03:12', '0:08'], ['h', 'P1 09:44', '0:07'], ['a', 'P2 06:20', '0:08'], ['h', 'P3 01:37', '0:06']],
     exit: [['h', 'P1 05:03', '0:07'], ['a', 'P1 14:26', '0:08'], ['h', 'P2 12:09', '0:06'], ['a', 'P3 09:15', '0:07']]
   };
+  var FO_SAHNE = { 'js.z.c': 'faceoff', 'js.z.oz': 'faceoff-oz', 'js.z.dz': 'faceoff-dz', 'js.z.nz': 'faceoff-nz' };
   var tabs = $$('#clipTabs [role=tab]'), list = $('#clipList'), pv = $('#clipPreview'), panel = $('#clipPanel');
   var curType = 'goal', curIdx = 0;
   function team(x) { return T(x === 'h' ? 'js.home' : 'js.away'); }
@@ -103,8 +104,12 @@
     $('#cpDesc').textContent = T(ty.cand ? 'js.cpCand' : type === 'faceoff' ? 'js.cpFo' : 'js.cpDesc', { d: c[2] });
     var yn = $('#cpYn'); if (yn) yn.hidden = !ty.cand; // Evet/Hayır yalnız adaylarda
     $('#cpMedia').style.setProperty('--c', ty.c);
-    // klip animasyonu (js/klip-anim.js): sahne olay türüne göre; deplasman klipleri aynalanır
-    d.dispatchEvent(new CustomEvent('clip:preview', { detail: { type: type, idx: i, mirror: c[0] === 'a' } }));
+    // klip animasyonu (js/klip-anim.js): sahne olay türüne göre; deplasman klipleri aynalanır.
+    // 17 Kasım 2026: penalty kill'de sayıca üstün olan rakiptir (ev sahibi PK → aynalı sahne: deplasman 5 kişiyle hücumda, ev sahibi kulübede);
+    // faceoff sahnesi klipteki bölgenin noktasında oynar ve aynalanmaz (bölge odak takıma göre, kazanan gösterilmez).
+    var sahne = type === 'faceoff' ? FO_SAHNE[c[3]] : type;
+    var ayna = type === 'faceoff' ? false : type === 'pp' ? (c[0] === 'a') !== (c[3][1] === 'js.pk') : c[0] === 'a';
+    d.dispatchEvent(new CustomEvent('clip:preview', { detail: { type: type, sahne: sahne, idx: i, mirror: ayna, guc: type === 'pp' ? c[3][0].replace('v', ' v ') : null } }));
     pv.classList.remove('swap'); void pv.offsetWidth; if (anim) pv.classList.add('swap');
   }
   function renderList(type, anim) {

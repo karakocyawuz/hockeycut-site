@@ -76,9 +76,32 @@
       puck: [['carry', 0, 2.0, 'a0'], ['pass', 2.0, 2.3, 'h1'], ['carry', 2.3, 5.5, 'h1']], q: { t: 3.0, k: 'js.qTurn', yn: 4.1 }, flip: 2.3, still: 4.4
     }
   };
+  S.faceoff.dot = [300, 150];
+  /* Bölge faceoff'ları (17 Kasım 2026, kullanıcı: "animasyonları incele, düzelt" — "Hücum bölgesi" yazan faceoff orta noktada oynuyordu).
+     Pak klipteki bölgenin noktasına bırakılır; bölge odak takıma (ev sahibi, sağa hücum) göredir, faceoff klipleri aynalanmaz.
+     Diziliş: santrlar noktada kendi tarafında; diğerleri dairenin dışında ve kendi tarafında. Uç bölgede savunan takımın beki kale önü/slot,
+     hücum eden takımın bekleri mavi çizginin hemen içinde; orta bölgede bekler geride. */
+  function foSahne(fx, fy) {
+    var v = fy < 150 ? 1 : -1, savunan = fx > 400 ? 'a' : fx < 200 ? 'h' : null;
+    function yol(a, b) { return [0, a[0], a[1], 1.5, a[0], a[1], 3.2, a[0] + (b[0] - a[0]) * 0.6, a[1] + (b[1] - a[1]) * 0.6, 5.5, b[0], b[1]]; }
+    function takim(tk) {
+      var s = tk === 'h' ? -1 : 1, P = [
+        [[fx + s * 10, fy], [fx + s * 16, fy + v * 18]],          // santr
+        [[fx + s * 30, fy - 38], [fx + s * 26, fy - 24]],         // kanat
+        [[fx + s * 30, fy + 38], [fx + s * 26, fy + 24]]];        // kanat
+      if (savunan === tk) P.push([[fx + s * 30, fy + v * 72], [fx + s * 30, fy + v * 66]], [[fx + s * 5, fy + v * 58], [fx + s * 8, fy + v * 48]]);
+      else if (savunan) P.push([[fx + s * 115, fy], [fx + s * 112, fy + v * 10]], [[fx + s * 115, 300 - fy], [fx + s * 112, 300 - fy - v * 10]]);
+      else P.push([[fx + s * 90, fy - 30], [fx + s * 80, fy - 26]], [[fx + s * 90, fy + 30], [fx + s * 80, fy + 26]]);
+      return P.map(function (p) { return yol(p[0], p[1]); });
+    }
+    return { h: takim('h'), a: takim('a'), dot: [fx, fy], still: 2.0, jitter: [1.5, 3.4],
+      puck: [['hold', 0, 1.2, fx, fy + v * 22], ['pass', 1.2, 1.5, [fx, fy]], ['hold', 1.5, 5.5, fx, fy]],
+      ref: [[0, fx, fy + v * 30, 1.3, fx, fy + v * 14, 3, fx, fy - v * 48, 5.5, fx, fy - v * 58]] };
+  }
+  S['faceoff-oz'] = foSahne(500, 80); S['faceoff-dz'] = foSahne(100, 220); S['faceoff-nz'] = foSahne(350, 220);
   var ARIA = { goal: 'js.aria.goal', pp: 'js.aria.pp', faceoff: 'js.aria.faceoff', entry: 'js.aria.entry', exit: 'js.aria.exit', shot: 'js.aria.shot', turn: 'js.aria.turn' };
 
-  var hold = false, type = 'goal', mirror = false, t = 0, last = 0, raf = 0, visible = false, W = 0, H = 0, dpr = 1, trail = [];
+  var hold = false, type = 'goal', mirror = false, qOver = null, t = 0, last = 0, raf = 0, visible = false, W = 0, H = 0, dpr = 1, trail = [];
   Object.keys(S).forEach(function (k) { var s = S[k]; s.id = {}; s.h.forEach(function (p, i) { s.id['h' + i] = p; }); s.a.forEach(function (p, i) { s.id['a' + i] = p; }); });
 
   /* Pak konumu + son sahip takım (halka rengi) */
@@ -102,6 +125,8 @@
 
   function dot(x, y, r, fill, stroke, lw) { ctx.beginPath(); ctx.arc(x, y, r, 0, 6.2832); if (fill) { ctx.fillStyle = fill; ctx.fill(); } if (stroke) { ctx.lineWidth = lw || 1.5; ctx.strokeStyle = stroke; ctx.stroke(); } }
   function col(side) { return side === 'h' ? (mirror ? AC : HC) : (mirror ? HC : AC); }
+  // kaleci gövdesi de takım rengini izler (17 Kasım 2026 hatası: aynalı deplasman golünde kaleci gövdesi pembe kalıyor, pembe takım kendi kalesine atmış gibi görünüyordu)
+  function gkFill(side) { return col(side) === HC ? '#bdb7a8' : '#c76aa2'; }
 
   function draw(tt) {
     var s = S[type]; ctx.setTransform(dpr * W / 600, 0, 0, dpr * W / 600, 0, 0); ctx.clearRect(0, 0, 600, 330);
@@ -119,7 +144,7 @@
     }
     var pk = puckAt(s, tt), gy = pk ? Math.min(165, Math.max(135, 150 + (pk.p[1] - 150) * 0.25)) : 150;
     // kaleciler
-    dot(50, 150, 8, '#bdb7a8', col('h'), 2); dot(550, gy, 8, '#c76aa2', col('a'), 2);
+    dot(50, 150, 8, gkFill('h'), col('h'), 2); dot(550, gy, 8, gkFill('a'), col('a'), 2);
     // oyuncular
     ['h', 'a'].forEach(function (sd) { s[sd].forEach(function (k, i) {
       var p = at(k, tt), h = ahead(k, tt), c = col(sd), carrier = s.puck.some(function (sg) { return sg[0] === 'carry' && sg[3] === sd + i && tt >= sg[1] && tt < sg[2]; });
@@ -149,8 +174,8 @@
     q.hidden = !show; q.classList.toggle('plain', !!(qq && qq.txt)); q.classList.toggle('yes', !!(qq && qq.yn && tt >= qq.yn));
   }
   function labels() {
-    var s = S[type], qq = s.q; media.setAttribute('aria-label', T(ARIA[type])); media.setAttribute('data-scene', type);
-    if (qL) { qL.textContent = qq ? (qq.txt || T(qq.k)) : ''; qY.textContent = T('js.yes'); qN.textContent = T('js.no'); }
+    var s = S[type], qq = s.q; media.setAttribute('aria-label', T(ARIA[type.split('-')[0]])); media.setAttribute('data-scene', type);
+    if (qL) { qL.textContent = qq ? (qOver || qq.txt || T(qq.k)) : ''; qY.textContent = T('js.yes'); qN.textContent = T('js.no'); }
   }
   function resize() { W = media.clientWidth; if (!W) return; H = W * 330 / 600; dpr = Math.min(2, w.devicePixelRatio || 1); cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr); if (!raf) render(); }
   function render() { var tt = reduce ? S[type].still : t; draw(tt); ui(tt); }
@@ -160,9 +185,10 @@
     render(); raf = requestAnimationFrame(frame);
   }
   function run() { if (!raf && visible && !d.hidden && !reduce && !hold) raf = requestAnimationFrame(frame); }
-  function set(ty, mir) { if (!S[ty]) return; type = ty; mirror = !!mir; t = 0; trail.length = 0; labels(); render(); }
+  // ty: sahne anahtarı (faceoff bölgeye göre: faceoff / faceoff-oz / -dz / -nz); mir: deplasman tarafı hücumda (renkler + yön aynalanır); q: soru çipi metni (pp: '5 v 4' / '4 v 5')
+  function set(ty, mir, q) { if (!S[ty]) return; type = ty; mirror = !!mir; qOver = q || null; t = 0; trail.length = 0; labels(); render(); }
 
-  d.addEventListener('clip:preview', function (e) { set(e.detail.type, e.detail.mirror); });
+  d.addEventListener('clip:preview', function (e) { set(e.detail.sahne || e.detail.type, e.detail.mirror, e.detail.guc); });
   d.addEventListener('i18n:ready', labels);
   // seek(sn): sahneyi o ana alıp durdurur (test/ekran görüntüsü); seek(null): döngüye devam
   function seek(a) { if (a == null) { hold = false; last = 0; run(); return; } hold = true; t = a; trail.length = 0; render(); }
@@ -171,7 +197,8 @@
     var s = S[ty]; if (!s) return null; var pk = puckAt(s, tt);
     return { h: s.h.map(function (k) { return at(k, tt); }), a: s.a.map(function (k) { return at(k, tt); }), pak: pk ? pk.p : null, taraf: pk ? pk.side : null };
   }
-  w.HA_KLIP = { set: set, seek: seek, scene: function () { return type; }, konum: konum, sahneler: Object.keys(S), sure: L, golAni: S.goal.goalAt };
+  w.HA_KLIP = { set: set, seek: seek, scene: function () { return type; }, aynali: function () { return mirror; }, konum: konum, sahneler: Object.keys(S), sure: L, golAni: S.goal.goalAt,
+    nokta: function (ty) { var s = S[ty]; return s && s.dot ? { x: s.dot[0], y: s.dot[1] } : null; } };
   if ('ResizeObserver' in w) new ResizeObserver(resize).observe(media); else w.addEventListener('resize', resize);
   if ('IntersectionObserver' in w) new IntersectionObserver(function (es) { visible = es[0].isIntersecting; if (visible) run(); }, { threshold: 0.05 }).observe(media); else { visible = true; run(); }
   d.addEventListener('visibilitychange', run);
