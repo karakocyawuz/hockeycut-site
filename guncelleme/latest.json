@@ -1,15 +1,15 @@
 {
-  "version": "0.1.13",
-  "notes": "Google Drive'dan maç seçme: video bilgisayara inmeden oynar, hazır analiz kendiliğinden gelir. Tabelası okunamayan maçlarda eksik görünen olaylar düzeldi. Tarihler GG.AA.YYYY, kartlarda olay sayısı, lige göre renkli etiket. Oyuncu takibi başka oyuncuya atlamak yerine durup soruyor.",
-  "pub_date": "2026-11-22T18:15:10Z",
+  "version": "0.1.14",
+  "notes": "Oyuncu takibi: halka oyuncunun ayağında kalıyor, daha az titriyor; oyuncu kaybolunca başka oyuncuya atlamak yerine soruyor. \"Yeniden analiz et\" artık sunucudaki güncel analizi getiriyor. Dosya adlarındaki tarihler 21.11.2026 biçiminde.",
+  "pub_date": "2026-11-22T23:59:10Z",
   "platforms": {
     "darwin-aarch64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVUek5wMEtNdkJWTTVSaGwyeG9sUXRmZUE0Ris4aFptbTl2dWhVazZrd3hHenJJTW5HZVpaNkF2Z2NqZExPSTJBM2xabW8wN3krZEZRNGNaaGVaUDFMZThYb2N2bnpIUWdBPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1MzY0NDAxCWZpbGU6SG9ja2V5Q3V0LTAuMS4xMy1tYWMtYXJtNjQuYXBwLnRhci5negl2ZXJzaW9uOjAuMS4xMwp6bnhCRVIvazVVa0syYVg1V3g0RTdJdVZuSzJOQjB3Zzd0ZnI0QzAzb21VS1FYdWp1RUd1V2Q2VFJsTkcxR2Fxczc5bTFBSGkxenIvRkdKWWpDWmJCUT09Cg==",
-      "url": "https://github.com/karakocyawuz/hockeycut-site/releases/download/v0.1.0/HockeyCut-0.1.13-mac-arm64.app.tar.gz"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVUek5wMEtNdkJWTThlVzBOeUhua2dHQUsxSjExQ1lzVmc0Ly90dzhRQk5COEpKZ1NCTlV0UC9qWWZVVWFlUDFZSlJNL1RBY0pEaUZIdy9CN2hoaEZObWlWUnI0V0ZGQ0FJPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1Mzg3NTM0CWZpbGU6SG9ja2V5Q3V0LTAuMS4xNC1tYWMtYXJtNjQuYXBwLnRhci5negl2ZXJzaW9uOjAuMS4xNApLeW9pK0ZDWjByNUNSdDgzQ0hRejlQcEVGQWh5eFFDazNJc1RPL2hnRnRHV1NuTWNEcjQ1UXdYOHRRWWxORDE5Z2NHN29FelRTWHpSWnI0Qys5R2dBQT09Cg==",
+      "url": "https://github.com/karakocyawuz/hockeycut-site/releases/download/v0.1.0/HockeyCut-0.1.14-mac-arm64.app.tar.gz"
     },
     "windows-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVUek5wMEtNdkJWTTFTRGpUVUdCbTJEWTZHZjVNcjVXbmVlOXY2N2dhVmNBaWxPUHlnMktRMXNTRGk5Zlp2cmZ2d3IrNFdKUHNnMTVzdXZ1UStRY3l3MlFCdWZodlBoYnc0PQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1MzcwNTAyCWZpbGU6SG9ja2V5Q3V0XzAuMS4xM194NjQtc2V0dXAuZXhlCXZlcnNpb246MC4xLjEzCk1KcmxvQ01XdGM2YXY4ZkZzZlVKSTlMOUJNN1QrTDFQYUpBbDF2UkY4TDR1OG1NbU52Z2ozL1Q3NFdVSm9FMENHRENnZkEvL2NZbTNWUENhdGZ1WkJnPT0K",
-      "url": "https://github.com/karakocyawuz/hockeycut-site/releases/download/v0.1.0/HockeyCut-0.1.13-windows-x64-setup.exe"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVUek5wMEtNdkJWTTc1NjJhbjBrOS85NTYyL3o1Y3d3b2ZZYys2NlU3RFVVckZxVEU0Ti9tOEQ1RXlEN3NMUHE2c0FSc1V6SGpWV1hjZDVGZzBRQjdCYVpiTVFycnEwaVFnPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1MzkxMjU2CWZpbGU6SG9ja2V5Q3V0XzAuMS4xNF94NjQtc2V0dXAuZXhlCXZlcnNpb246MC4xLjE0ClBoUjJHU3lkTXVzRnZjRzdjRUY0enVCblZQQkxOUm9vMDVzdTlGRjFhZmFONnlOY2pHMUlKdlp0TVZBeWpRQ1ltemV0SHdjTkd0K3FoYnlYOVk4WkJnPT0K",
+      "url": "https://github.com/karakocyawuz/hockeycut-site/releases/download/v0.1.0/HockeyCut-0.1.14-windows-x64-setup.exe"
     }
   }
 }
