@@ -1,14 +1,14 @@
 {
   "version": "0.1.13",
   "notes": "Google Drive'dan maç seçme: video bilgisayara inmeden oynar, hazır analiz kendiliğinden gelir. Tabelası okunamayan maçlarda eksik görünen olaylar düzeldi. Tarihler GG.AA.YYYY, kartlarda olay sayısı, lige göre renkli etiket. Oyuncu takibi başka oyuncuya atlamak yerine durup soruyor.",
-  "pub_date": "2026-11-22T17:30:45Z",
+  "pub_date": "2026-11-22T18:15:10Z",
   "platforms": {
     "darwin-aarch64": {
       "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVUek5wMEtNdkJWTTVSaGwyeG9sUXRmZUE0Ris4aFptbTl2dWhVazZrd3hHenJJTW5HZVpaNkF2Z2NqZExPSTJBM2xabW8wN3krZEZRNGNaaGVaUDFMZThYb2N2bnpIUWdBPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1MzY0NDAxCWZpbGU6SG9ja2V5Q3V0LTAuMS4xMy1tYWMtYXJtNjQuYXBwLnRhci5negl2ZXJzaW9uOjAuMS4xMwp6bnhCRVIvazVVa0syYVg1V3g0RTdJdVZuSzJOQjB3Zzd0ZnI0QzAzb21VS1FYdWp1RUd1V2Q2VFJsTkcxR2Fxczc5bTFBSGkxenIvRkdKWWpDWmJCUT09Cg==",
       "url": "https://github.com/karakocyawuz/hockeycut-site/releases/download/v0.1.0/HockeyCut-0.1.13-mac-arm64.app.tar.gz"
     },
     "windows-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVUek5wMEtNdkJWTTBMNkl0dWFxUVdDU29KcVRxQXNPY2tIbkdrc3lQS1pSQlJuUVZUVkxjWmh1WFU0Z0Ztc0ZOc0xKeTQrTlVIaU5OOW9RQUdRanp2eUd0bUtwRkhvQkFNPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1MzY3NTg2CWZpbGU6SG9ja2V5Q3V0XzAuMS4xM194NjQtc2V0dXAuZXhlCXZlcnNpb246MC4xLjEzCnNLTDJuYytBWTlUbU5FR0JhSFpOZXJzMUpiK2o3RGRxZWlaOER3QWFTSTNvSmFGcHpVY2hQWUR3a2RONGN3WWpoaktwbVh4RTMyN1k4UVB6VkxjYURnPT0K",
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVUek5wMEtNdkJWTTFTRGpUVUdCbTJEWTZHZjVNcjVXbmVlOXY2N2dhVmNBaWxPUHlnMktRMXNTRGk5Zlp2cmZ2d3IrNFdKUHNnMTVzdXZ1UStRY3l3MlFCdWZodlBoYnc0PQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1MzcwNTAyCWZpbGU6SG9ja2V5Q3V0XzAuMS4xM194NjQtc2V0dXAuZXhlCXZlcnNpb246MC4xLjEzCk1KcmxvQ01XdGM2YXY4ZkZzZlVKSTlMOUJNN1QrTDFQYUpBbDF2UkY4TDR1OG1NbU52Z2ozL1Q3NFdVSm9FMENHRENnZkEvL2NZbTNWUENhdGZ1WkJnPT0K",
       "url": "https://github.com/karakocyawuz/hockeycut-site/releases/download/v0.1.0/HockeyCut-0.1.13-windows-x64-setup.exe"
     }
   }
