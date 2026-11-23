@@ -1,15 +1,11 @@
 {
-  "version": "0.1.14",
-  "notes": "Oyuncu takibi: halka oyuncunun ayağında kalıyor, daha az titriyor; oyuncu kaybolunca başka oyuncuya atlamak yerine soruyor. \"Yeniden analiz et\" artık sunucudaki güncel analizi getiriyor. Dosya adlarındaki tarihler 21.11.2026 biçiminde.",
-  "pub_date": "2026-11-22T23:59:10Z",
+  "version": "0.1.15",
+  "notes": "Çizim ekranında video daha büyük ve takip sırasında boy değiştirmiyor; seçenekler videonun altındaki tek satırda. Analiz ekranında liste oynatılırken video küçülmüyor. Olaylar'da yeni \"Faceoff → şut\" listesi: faceofftan sonra 12 saniye içinde şut ya da gol olan diziler tek klip.",
+  "pub_date": "2026-11-23T01:08:13Z",
   "platforms": {
     "darwin-aarch64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVUek5wMEtNdkJWTThlVzBOeUhua2dHQUsxSjExQ1lzVmc0Ly90dzhRQk5COEpKZ1NCTlV0UC9qWWZVVWFlUDFZSlJNL1RBY0pEaUZIdy9CN2hoaEZObWlWUnI0V0ZGQ0FJPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1Mzg3NTM0CWZpbGU6SG9ja2V5Q3V0LTAuMS4xNC1tYWMtYXJtNjQuYXBwLnRhci5negl2ZXJzaW9uOjAuMS4xNApLeW9pK0ZDWjByNUNSdDgzQ0hRejlQcEVGQWh5eFFDazNJc1RPL2hnRnRHV1NuTWNEcjQ1UXdYOHRRWWxORDE5Z2NHN29FelRTWHpSWnI0Qys5R2dBQT09Cg==",
-      "url": "https://github.com/karakocyawuz/hockeycut-site/releases/download/v0.1.0/HockeyCut-0.1.14-mac-arm64.app.tar.gz"
-    },
-    "windows-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVUek5wMEtNdkJWTTc1NjJhbjBrOS85NTYyL3o1Y3d3b2ZZYys2NlU3RFVVckZxVEU0Ti9tOEQ1RXlEN3NMUHE2c0FSc1V6SGpWV1hjZDVGZzBRQjdCYVpiTVFycnEwaVFnPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1MzkxMjU2CWZpbGU6SG9ja2V5Q3V0XzAuMS4xNF94NjQtc2V0dXAuZXhlCXZlcnNpb246MC4xLjE0ClBoUjJHU3lkTXVzRnZjRzdjRUY0enVCblZQQkxOUm9vMDVzdTlGRjFhZmFONnlOY2pHMUlKdlp0TVZBeWpRQ1ltemV0SHdjTkd0K3FoYnlYOVk4WkJnPT0K",
-      "url": "https://github.com/karakocyawuz/hockeycut-site/releases/download/v0.1.0/HockeyCut-0.1.14-windows-x64-setup.exe"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVUek5wMEtNdkJWTTRTWHpQWGFXaVdYdEVhMlRRSWJML2tIL3ZtbWkxTUdLQVNKOXlxNndxRUhTd0dBcHZrdVBQdUI0SWcrM1RabUg4RnUyU2NNaTJHQWVCRXE2Njg4T0FJPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1Mzk1ODg5CWZpbGU6SG9ja2V5Q3V0LTAuMS4xNS1tYWMtYXJtNjQuYXBwLnRhci5negl2ZXJzaW9uOjAuMS4xNQpHMkNEbjVRVDZENXJsWkEwSzJUV1ZFTU9MUXd0K3ZaVUtwczlLQnh0a1VwVEJpK3JIVlREdXU0bmd4T1lHMFJtWWNWVjMvWHZGN3cwNGRLL2kzbnBDUT09Cg==",
+      "url": "https://github.com/karakocyawuz/hockeycut-site/releases/download/v0.1.0/HockeyCut-0.1.15-mac-arm64.app.tar.gz"
     }
   }
 }
