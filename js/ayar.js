@@ -76,7 +76,7 @@
   // WINDOWS_ACIK: "yalnız Mac / Windows yolda" diyen metinler Windows'u da anan anahtarlara döner (çeviriler i18n/<dil>.json; İngilizcesi burada ve i18n.js'te)
   var WIN_METIN = {
     'hero.eyebrow': ['hero.eyebrowW', 'Video analysis for ice hockey · runs on Mac and Windows'],
-    'hero.meta3': ['hero.meta3W', 'You do not upload the full game'],
+    'hero.meta3': ['hero.meta3W', 'Your match video is never sent to HockeyCut'],
     'cta.dl': ['cta.dlW', 'Download'],
     'pr.free.cta': ['cta.dlW', 'Download'],
     'pr.pro.note': ['pr.pro.noteW', 'Runs on Macs with Apple Silicon and on Windows 10/11 (64-bit).'],
