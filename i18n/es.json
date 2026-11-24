@@ -183,6 +183,7 @@
   "dl.plat.winS": "Windows 10 u 11, 64 bits",
   "dl.plat.winYok": "La versión para Windows aún no está disponible. Por ahora la descarga es solo para Mac.",
   "dl.plat.winUyari": "Si Windows muestra un aviso al abrir el instalador, haz clic en «Más información» y luego en «Ejecutar de todas formas».",
+  "dl.plat.macIntel": "Para los Mac con procesador Intel (anteriores al M1) se está preparando una versión; todavía no está disponible.",
   "dl.plat.winSoon": "Próximamente",
   "hero.meta3W": "El partido completo se queda en tu ordenador",
   "cta.dlW": "Descargar",

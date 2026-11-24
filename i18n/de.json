@@ -183,6 +183,7 @@
   "dl.plat.winS": "Windows 10 oder 11, 64 Bit",
   "dl.plat.winYok": "Die Windows-Version ist noch nicht verfügbar. Vorerst gibt es den Download nur für Mac.",
   "dl.plat.winUyari": "Falls Windows beim Öffnen des Installers warnt: auf „Weitere Informationen“ und dann auf „Trotzdem ausführen“ klicken.",
+  "dl.plat.macIntel": "Macs mit Intel-Prozessor (vor M1): Eine Version ist in Vorbereitung und noch nicht verfügbar.",
   "dl.plat.winSoon": "Bald verfügbar",
   "hero.meta3W": "Das ganze Spiel bleibt auf Ihrem Computer",
   "cta.dlW": "Herunterladen",

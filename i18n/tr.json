@@ -261,6 +261,7 @@
   "dl.plat.winS": "Windows 10 ya da 11, 64 bit",
   "dl.plat.winYok": "Windows sürümü henüz hazır değil. Şimdilik yalnız Mac için indirilebilir.",
   "dl.plat.winUyari": "Kurulumu açarken Windows uyarı verirse önce “Ek bilgi”ye, sonra “Yine de çalıştır”a tıklayın.",
+  "dl.plat.macIntel": "Intel işlemcili (M1 öncesi) Mac’ler için sürüm hazırlanıyor; henüz indirilemiyor.",
   "dl.plat.winSoon": "Yakında",
   "hero.eyebrowW": "Buz hokeyi için video analizi · Mac ve Windows’ta çalışır",
   "hero.meta3W": "Maçın tamamı bilgisayarınızda kalır",

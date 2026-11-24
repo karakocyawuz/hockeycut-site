@@ -183,6 +183,7 @@
   "dl.plat.winS": "Windows 10 ou 11, 64 bits",
   "dl.plat.winYok": "La version Windows n’est pas encore disponible. Pour l’instant, le téléchargement est réservé au Mac.",
   "dl.plat.winUyari": "Si Windows affiche un avertissement à l’ouverture du programme d’installation, cliquez sur « Informations complémentaires », puis sur « Exécuter quand même ».",
+  "dl.plat.macIntel": "Pour les Mac à processeur Intel (avant le M1), une version est en préparation et n’est pas encore disponible.",
   "dl.plat.winSoon": "Bientôt",
   "hero.meta3W": "Le match complet reste sur votre ordinateur",
   "cta.dlW": "Télécharger",

@@ -19,7 +19,7 @@
   function platSec(p, odak) {
     if (!pk) return; plat = p;
     pk.querySelectorAll('[data-plat]').forEach(function (b) { var on = b.getAttribute('data-plat') === p; b.setAttribute('aria-checked', on ? 'true' : 'false'); b.tabIndex = on ? 0 : -1; if (on && odak) b.focus(); });
-    kart.classList.toggle('plat-yok', p === 'win' && !WIN); kart.classList.toggle('plat-win', p === 'win' && WIN);
+    kart.classList.toggle('plat-mac', p === 'mac'); kart.classList.toggle('plat-yok', p === 'win' && !WIN); kart.classList.toggle('plat-win', p === 'win' && WIN);
     if (msg.textContent && !sending) { msg.textContent = ''; msg.className = 'dl-msg'; }
   }
   if (pk) {
@@ -32,6 +32,10 @@
     var ua = (w.navigator.userAgentData && w.navigator.userAgentData.platform) || w.navigator.userAgent || '';
     platSec(/Windows/i.test(ua) ? 'win' : 'mac', false);
   }
+  // Intel Mac sürümü çıkınca surum.json'a "mac_intel" alanı (adres) eklenir; o zaman "hazırlanıyor" notu kalkar (aynı kaynak: güncelleme bildirgesi)
+  if (pk && w.fetch) fetch('surum.json', { cache: 'no-cache' }).then(function (r) { return r.ok ? r.json() : null; }).then(function (j) {
+    if (j && j.mac_intel && j.mac_intel.adres) d.documentElement.classList.add('intel-hazir');
+  }).catch(function () { /* dosya yoksa not görünür kalır */ });
   w.HA_INDIR_PLATFORM = function () { return plat; };   // e2e
 
   /* Başarı bildirimi: ortada açılan pencere (<dialog>, odak düğmede, Esc / Tamam / dışarı tık kapatır; kapanınca odak lig sorusuna döner) */

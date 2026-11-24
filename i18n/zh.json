@@ -125,6 +125,7 @@
   "dl.plat.winS": "Windows 10 或 11，64 位",
   "dl.plat.winYok": "Windows 版本尚未推出。目前仅提供 Mac 版下载。",
   "dl.plat.winUyari": "打开安装程序时如果 Windows 显示警告，请先点击“更多信息”，再点击“仍要运行”。",
+  "dl.plat.macIntel": "搭载 Intel 处理器的 Mac（M1 之前的机型）：对应版本正在准备中，暂时还不能下载。",
   "dl.plat.winSoon": "即将推出",
   "faq.a3w": "配备 Apple 芯片（M1 或更新）的 Mac，或运行 Windows 10 或 11（64 位）的电脑。在 Windows 上，有显卡时分析更快；没有显卡时在处理器上运行，耗时更长。",
   "nav.dl": "下载",

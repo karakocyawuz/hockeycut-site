@@ -261,6 +261,7 @@
   "dl.plat.winS": "Windows 10 or 11, 64-bit",
   "dl.plat.winYok": "The Windows version is not available yet. For now the download is for Mac only.",
   "dl.plat.winUyari": "Windows may show a warning when you open the installer: click “More info”, then “Run anyway”.",
+  "dl.plat.macIntel": "Intel Macs (made before M1): a version is being prepared and is not available yet.",
   "dl.plat.winSoon": "Coming soon",
   "hero.eyebrowW": "Video analysis for ice hockey · runs on Mac and Windows",
   "hero.meta3W": "The full game stays on your computer",

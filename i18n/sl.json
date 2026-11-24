@@ -125,6 +125,7 @@
   "dl.plat.winS": "Windows 10 ali 11, 64-bitni",
   "dl.plat.winYok": "Različica za Windows še ni na voljo. Zaenkrat je na voljo le prenos za Mac.",
   "dl.plat.winUyari": "Če Windows ob odpiranju namestitvenega programa prikaže opozorilo, kliknite »Več informacij« in nato »Vseeno zaženi«.",
+  "dl.plat.macIntel": "Za Mace z Intelovim procesorjem (starejše od M1) pripravljamo različico; zaenkrat še ni na voljo.",
   "dl.plat.winSoon": "Kmalu",
   "faq.a3w": "Mac z Apple Silicon (M1 ali novejši) ali računalnik z Windows 10 ali 11 (64-bitni). V sistemu Windows je analiza hitrejša z grafično kartico; brez nje teče na procesorju in traja dlje.",
   "nav.dl": "Prenos",

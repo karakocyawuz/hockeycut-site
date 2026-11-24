@@ -125,6 +125,7 @@
   "dl.plat.winS": "Windows 10 nebo 11, 64bitový",
   "dl.plat.winYok": "Verze pro Windows zatím není k dispozici. Zatím lze stáhnout jen verzi pro Mac.",
   "dl.plat.winUyari": "Pokud Windows při otevření instalačního programu zobrazí varování, klikněte na „Další informace“ a potom na „Přesto spustit“.",
+  "dl.plat.macIntel": "Pro Macy s procesorem Intel (starší než M1) se verze připravuje a zatím není k dispozici.",
   "dl.plat.winSoon": "Již brzy",
   "faq.a3w": "Mac s Apple Silicon (M1 nebo novější) nebo počítač s Windows 10 nebo 11 (64bitový). Ve Windows je analýza rychlejší s grafickou kartou; bez ní běží na procesoru a trvá déle.",
   "nav.dl": "Stáhnout",

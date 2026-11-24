@@ -125,6 +125,7 @@
   "dl.plat.winS": "Windows 10 ili 11, 64-bitni",
   "dl.plat.winYok": "Verzija za Windows još nije dostupna. Zasad se može preuzeti samo verzija za Mac.",
   "dl.plat.winUyari": "Ako Windows pri otvaranju instalacijskog programa prikaže upozorenje, kliknite „Dodatne informacije”, a zatim „Svejedno pokreni”.",
+  "dl.plat.macIntel": "Za Macove s Intelovim procesorom (starije od M1) verzija se priprema i još nije dostupna.",
   "dl.plat.winSoon": "Uskoro",
   "faq.a3w": "Mac s Apple Siliconom (M1 ili noviji) ili računalo sa sustavom Windows 10 ili 11 (64-bitni). Na Windowsu je analiza brža s grafičkom karticom; bez nje radi na procesoru i traje dulje.",
   "nav.dl": "Preuzimanje",
