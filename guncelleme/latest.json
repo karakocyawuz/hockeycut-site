@@ -1,11 +1,11 @@
 {
-  "version": "0.1.15",
-  "notes": "Çizim ekranında video daha büyük ve takip sırasında boy değiştirmiyor; seçenekler videonun altındaki tek satırda. Analiz ekranında liste oynatılırken video küçülmüyor. Olaylar'da yeni \"Faceoff → şut\" listesi: faceofftan sonra 12 saniye içinde şut ya da gol olan diziler tek klip.",
-  "pub_date": "2026-11-23T01:08:13Z",
+  "version": "0.1.17",
+  "notes": "Maçlarım listesinde olay ve onay bekleyen sayıları analiz biter bitmez görünür; maçı açmak gerekmez (0.1.16'daki düzeltme tamamlandı). Maç listesinin üstünde yeni Tarih düğmesi: maç tarihine göre yeniden eskiye / eskiden yeniye ya da yükleme tarihine göre sıralama.",
+  "pub_date": "2026-11-24T16:39:40Z",
   "platforms": {
     "darwin-aarch64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVUek5wMEtNdkJWTTRTWHpQWGFXaVdYdEVhMlRRSWJML2tIL3ZtbWkxTUdLQVNKOXlxNndxRUhTd0dBcHZrdVBQdUI0SWcrM1RabUg4RnUyU2NNaTJHQWVCRXE2Njg4T0FJPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1Mzk1ODg5CWZpbGU6SG9ja2V5Q3V0LTAuMS4xNS1tYWMtYXJtNjQuYXBwLnRhci5negl2ZXJzaW9uOjAuMS4xNQpHMkNEbjVRVDZENXJsWkEwSzJUV1ZFTU9MUXd0K3ZaVUtwczlLQnh0a1VwVEJpK3JIVlREdXU0bmd4T1lHMFJtWWNWVjMvWHZGN3cwNGRLL2kzbnBDUT09Cg==",
-      "url": "https://github.com/karakocyawuz/hockeycut-site/releases/download/v0.1.0/HockeyCut-0.1.15-mac-arm64.app.tar.gz"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVUek5wMEtNdkJWTTQyZXVUYnN4QmNsNUl1NEprYXBXYUgxanVIYmhsd1Qza0hyeVVrV2ozTmVmMmdXcCt4OVdING04TDJtMmZLUFJxRk1XTGpWdk9iMW5qNFlldzQxK1FvPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1NTMyNTA4CWZpbGU6SG9ja2V5Q3V0LTAuMS4xNy1tYWMtYXJtNjQuYXBwLnRhci5negl2ZXJzaW9uOjAuMS4xNwpUM3hMTzBseGhOTTFlbk5jTG44cURwNlVTQ0ZnbjZlb200dVEzdmFobmpMd0t0NXBVcW44OTgvVisvNEd1djY2SnppSXk0dWo2M1JQYUFkTzExbkRCUT09Cg==",
+      "url": "https://github.com/karakocyawuz/hockeycut-site/releases/download/v0.1.0/HockeyCut-0.1.17-mac-arm64.app.tar.gz"
     }
   }
 }
