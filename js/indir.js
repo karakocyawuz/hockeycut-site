@@ -32,10 +32,20 @@
     var ua = (w.navigator.userAgentData && w.navigator.userAgentData.platform) || w.navigator.userAgent || '';
     platSec(/Windows/i.test(ua) ? 'win' : 'mac', false);
   }
-  // Intel Mac sürümü çıkınca surum.json'a "mac_intel" alanı (adres) eklenir; o zaman "hazırlanıyor" notu kalkar (aynı kaynak: güncelleme bildirgesi)
+  /* Intel Mac sürümü yayında: surum.json'a "mac_intel": {"son","adres"} eklenince <html> sınıfı .intel-hazir olur (aynı kaynak: güncelleme bildirgesi).
+     Mac düğmesinin alt yazısı Intel'i de kapsar, "hazırlanıyor" notu yerine kısa bilgi (+ Intel sürümünün sınırı) gelir; fiyat notu ve SSS cevabı da Intel'i anar.
+     Metinler data-i18n anahtarı değiştirilerek yenilenir (i18n.js sonradan yüklenirse apply() yeni anahtarı kullanır; önce yüklenmişse T() ile hemen yazılır).
+     intel-hazir DEĞİLKEN hiçbir şey değişmez. Windows kapalı kipte (WINDOWS_ACIK=false) pr.pro.note / faq.a3 anahtarları bu listede yok → onlara dokunulmaz. */
+  var INTEL_METIN = [['dl.plat.macS', 'dl.plat.macSI'], ['dl.plat.macIntel', 'dl.plat.macIntelOk'], ['pr.pro.noteW', 'pr.pro.noteI'], ['faq.a3w', 'faq.a3i'], ['dl.note', 'dl.noteW']];
+  function intelHazir() {
+    d.documentElement.classList.add('intel-hazir');
+    INTEL_METIN.forEach(function (c) {
+      d.querySelectorAll('[data-i18n="' + c[0] + '"]').forEach(function (el) { el.setAttribute('data-i18n', c[1]); el.textContent = T(c[1]); });
+    });
+  }
   if (pk && w.fetch) fetch('surum.json', { cache: 'no-cache' }).then(function (r) { return r.ok ? r.json() : null; }).then(function (j) {
-    if (j && j.mac_intel && j.mac_intel.adres) d.documentElement.classList.add('intel-hazir');
-  }).catch(function () { /* dosya yoksa not görünür kalır */ });
+    if (j && j.mac_intel && j.mac_intel.adres) intelHazir();
+  }).catch(function () { /* dosya yoksa "hazırlanıyor" notu görünür kalır */ });
   w.HA_INDIR_PLATFORM = function () { return plat; };   // e2e
 
   /* Başarı bildirimi: ortada açılan pencere (<dialog>, odak düğmede, Esc / Tamam / dışarı tık kapatır; kapanınca odak lig sorusuna döner) */

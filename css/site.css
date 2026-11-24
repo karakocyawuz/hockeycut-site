@@ -723,6 +723,6 @@ html.indirme-acik .dl-soon{display:none}
 .dl-plat-not{display:none}
 .plat-yok #dlPlatYok,.plat-win #dlPlatUyari{display:block}
 .plat-mac #dlPlatIntel{display:block}
-.intel-hazir #dlPlatIntel{display:none}
+/* intel-hazir: js/indir.js aynı nota yeni metni (dl.plat.macIntelOk) koyar; not görünür kalır */
 .plat-yok #dlLigBox,.plat-yok #dlSub,.plat-yok #dlForm{display:none}
 @media (max-width:400px){.dl-plat-b{padding:10px 12px}.dl-plat-b small{font-size:12.5px}}
