@@ -9,7 +9,8 @@
    SATIS_ACIK = false (şimdilik, KT-539): ücretli satış YOK (şirket yok, ödeme altyapısı yok; lisans anahtarı elle verilir).
      - fiyat kartındaki Premium satın alma düğmesi tıklanmaz "Yakında" etiketine dönüşür (kart ve özellik listesi kalır);
      - kahramandaki "Premium: ayda 10 $" satırı, alt bilgideki Premium ve İade / Mesafeli satış bağlantıları kalkar;
-     - SSS "Ücretsiz ve Premium nasıl işler?" cevabı kapalı kip metnine (faq.a5k) döner.
+     - 25 Kasım 2026: fiyat bölümünde Premium kartı ve SSS'deki fiyat cümleleri HTML'den çıkarıldı (ücretsiz dönem, maç sınırı yok); satışı açarken
+       kart ve metinler git geçmişinden (sinirsiz-metin öncesi) geri alınır.
    Açmak için: SATIS_ACIK = true → bugünkü davranış aynen gelir. İki bayrak birbirinden bağımsızdır.
    (tools/site-yayin-hazirla.sh, SATIS_ACIK = false iken yayın kopyasından mesafeli-satis ve refunds sayfalarını da çıkarır.)
 
@@ -39,8 +40,6 @@
       a.parentNode.replaceChild(s, a);
     });
     d.querySelectorAll('a[data-tr="yasal/mesafeli-satis.html"], a[href="yasal/en/refunds.html"]').forEach(kaldir); // iade / mesafeli satış
-    var a5 = d.querySelector('[data-i18n="faq.a5"]');
-    if (a5) { a5.setAttribute('data-i18n', 'faq.a5k'); a5.textContent = 'Free: 2 games, available today. After each game you answer its Yes/No candidates and the next one opens. In return, your answers and short clips are sent to us for model training. Premium is not on sale yet.'; }
   }
 
   function bagla() {
