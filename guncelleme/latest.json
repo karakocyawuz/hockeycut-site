@@ -1,15 +1,15 @@
 {
-  "version": "0.1.18",
-  "notes": "Yeniden analizde verdiğin Evet/Hayır cevapları korunur. Onay sırasında iki takımın soruları tek sırada gelir. Intel (M1 öncesi) Mac'ler için hafif sürüm: hazır analiz indirilir, video maçla elle eşlenebilir.",
-  "pub_date": "2026-11-24T20:47:56Z",
+  "version": "0.1.20",
+  "notes": "Maç sayısı sınırı kalktı: yeni maç eklemeden önce önceki maçın Evet/Hayır sorularını bitirmeniz yeterli. Sorular arasında bekleme azaldı (sıradaki klipler önceden hazırlanır). Turnover sorusunda klip pakın kaybedildiği andan önce başlar. Bilgisayar saati biraz yanlış olsa da anahtar etkinleşir.",
+  "pub_date": "2026-11-25T21:41:28Z",
   "platforms": {
     "darwin-aarch64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVUek5wMEtNdkJWTTZpZjVibm5YNm1KSlZhckVOdUxOU2FYMVVRUXhkcnJhS2cxVjJ6WEZPREovODlvK1ZobXVaOEpNNzk5SnFUUTEyaXVaQ2ZmWGU5TmpKaHEwUnJCVUFVPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1NTUxMzUzCWZpbGU6SG9ja2V5Q3V0LTAuMS4xOC1tYWMtYXJtNjQuYXBwLnRhci5negl2ZXJzaW9uOjAuMS4xOApqUzN6UW5LeWFBcFMyWndJZ3l3TkFMN3BONkozM1Vra2ZoL0owbzdjZW44YTE2eTZCQ3V3VGkrQ0tneVZkNk56R0psZUU2TlZ4RUU4QnhFN3ZLME9Cdz09Cg==",
-      "url": "https://github.com/karakocyawuz/hockeycut-site/releases/download/v0.1.0/HockeyCut-0.1.18-mac-arm64.app.tar.gz"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVUek5wMEtNdkJWTTBsa1JNbVhmTVRteWdaU1FrTWlMb0VwMDRGYzlpWWN6dlpEY0d0b3ZZVkU2eGhEWW91RmZzSjJyNktoRXAvRmFjaEtXblJuV2lTUzVSRGN1TStHdXdRPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1NjQwODcxCWZpbGU6SG9ja2V5Q3V0LTAuMS4yMC1tYWMtYXJtNjQuYXBwLnRhci5negl2ZXJzaW9uOjAuMS4yMAphNlJuK1ZHRmtyNk94K2swTHQ0dFVGeWpMUUVVNVV1VUg5NHFGTEtCaTd2RlVKK0dTS1JnRGp3UExwdHBnTStUVFU3cm9GMm14SU1wMlRLMGZiNmJDQT09Cg==",
+      "url": "https://github.com/karakocyawuz/hockeycut-site/releases/download/v0.1.0/HockeyCut-0.1.20-mac-arm64.app.tar.gz"
     },
     "darwin-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVUek5wMEtNdkJWTXk3Z29OZE5VOWN0emFkdTZwTWVGYll3RFRsVXdicFVQS2N1eDNEQjFySWxVR1hGeGQxczJ4amlVUDRsWi9WZ3VlNm5LNEFXcERCRDlOM2RmcUV5V0FBPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1NTUyMzk5CWZpbGU6SG9ja2V5Q3V0LTAuMS4xOC1tYWMteDY0LmFwcC50YXIuZ3oJdmVyc2lvbjowLjEuMTgKWDNwR1pMb1NERkxWZ21YYm8xN1J6VTNEY0xXUXRVMHdQVXgxTlR4ZlY2ZDNPcW9oTHp0WVBTVG16Q2QreEM1dzFGWHZlYlJJWGs2bUJGd3ZZTjIyQnc9PQo=",
-      "url": "https://github.com/karakocyawuz/hockeycut-site/releases/download/v0.1.0/HockeyCut-0.1.18-mac-x64.app.tar.gz"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVUek5wMEtNdkJWTXhSQmgvdGpCNStFTmJSN0FSTWpCMTdUSFdTcVo1VVZheC9tNWtYQW1jaTlsNHorZkhMS1JIVk9RWnIzMEczRXdrYjNDeFlRWjBEWG9YRE55MFhLUVE4PQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1NjQxNjU1CWZpbGU6SG9ja2V5Q3V0LTAuMS4yMC1tYWMteDY0LmFwcC50YXIuZ3oJdmVyc2lvbjowLjEuMjAKTnM1bDNSY2MzL3k1Q1FlL2V5alJxSUtYWGVXSENtVk5jWlQ4cjlaZWRUeU55RDlJc3hXd1ZZNUFNbkhiOGFiNlI3TkQ3WGVxc09kbDViR0FiYjd0Q3c9PQo=",
+      "url": "https://github.com/karakocyawuz/hockeycut-site/releases/download/v0.1.0/HockeyCut-0.1.20-mac-x64.app.tar.gz"
     }
   }
 }
