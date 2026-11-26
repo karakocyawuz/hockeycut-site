@@ -1,15 +1,15 @@
 {
-  "version": "0.1.20",
-  "notes": "Maç sayısı sınırı kalktı: yeni maç eklemeden önce önceki maçın Evet/Hayır sorularını bitirmeniz yeterli. Sorular arasında bekleme azaldı (sıradaki klipler önceden hazırlanır). Turnover sorusunda klip pakın kaybedildiği andan önce başlar. Bilgisayar saati biraz yanlış olsa da anahtar etkinleşir.",
-  "pub_date": "2026-11-25T21:41:28Z",
+  "version": "0.1.21",
+  "notes": "Önemli düzeltme: listede görünmeyen eski bir maç yüzünden \"önce soruları bitirin\" uyarısında kilitlenme giderildi. Sorularda \"Geç\" düğmesi: emin olmadığınız birkaç soruyu atlayabilirsiniz. Ayarlar’da \"Güncellemeleri denetle\" düğmesi; \"Daha sonra\" dediğiniz güncelleme uygulamayı yeniden açınca tekrar sorulur. Oyuncu takibi çalışmıyorsa nedeni ekranda yazar.",
+  "pub_date": "2026-11-26T14:47:57Z",
   "platforms": {
     "darwin-aarch64": {
       "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVUek5wMEtNdkJWTTBsa1JNbVhmTVRteWdaU1FrTWlMb0VwMDRGYzlpWWN6dlpEY0d0b3ZZVkU2eGhEWW91RmZzSjJyNktoRXAvRmFjaEtXblJuV2lTUzVSRGN1TStHdXdRPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1NjQwODcxCWZpbGU6SG9ja2V5Q3V0LTAuMS4yMC1tYWMtYXJtNjQuYXBwLnRhci5negl2ZXJzaW9uOjAuMS4yMAphNlJuK1ZHRmtyNk94K2swTHQ0dFVGeWpMUUVVNVV1VUg5NHFGTEtCaTd2RlVKK0dTS1JnRGp3UExwdHBnTStUVFU3cm9GMm14SU1wMlRLMGZiNmJDQT09Cg==",
       "url": "https://github.com/karakocyawuz/hockeycut-site/releases/download/v0.1.0/HockeyCut-0.1.20-mac-arm64.app.tar.gz"
     },
     "darwin-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVUek5wMEtNdkJWTXhSQmgvdGpCNStFTmJSN0FSTWpCMTdUSFdTcVo1VVZheC9tNWtYQW1jaTlsNHorZkhMS1JIVk9RWnIzMEczRXdrYjNDeFlRWjBEWG9YRE55MFhLUVE4PQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1NjQxNjU1CWZpbGU6SG9ja2V5Q3V0LTAuMS4yMC1tYWMteDY0LmFwcC50YXIuZ3oJdmVyc2lvbjowLjEuMjAKTnM1bDNSY2MzL3k1Q1FlL2V5alJxSUtYWGVXSENtVk5jWlQ4cjlaZWRUeU55RDlJc3hXd1ZZNUFNbkhiOGFiNlI3TkQ3WGVxc09kbDViR0FiYjd0Q3c9PQo=",
-      "url": "https://github.com/karakocyawuz/hockeycut-site/releases/download/v0.1.0/HockeyCut-0.1.20-mac-x64.app.tar.gz"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVUek5wMEtNdkJWTTNkSDNIU0tLL09TNVh6cmdtNmpQVW9pVXlJUjdqQUkzcHd1TGl6RjcwaVE3T25zTWF3TUZQbDl6WVY5K3NIaDV6V2kzaE5Hc0ZpeWNzMkFRWS9FNVFNPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1NzAyODY5CWZpbGU6SG9ja2V5Q3V0LTAuMS4yMS1tYWMteDY0LmFwcC50YXIuZ3oJdmVyc2lvbjowLjEuMjEKck44ZndQZTQyalJoR3VSdURhTVZVaEY1cHpQcEJabVV2UWhVbHBMYVc1d3NEUDBaTFBQUWN1RFNwdEFqbDlKMjNFeTh0cVhxajcvZWRDWmJxOXh3QlE9PQo=",
+      "url": "https://github.com/karakocyawuz/hockeycut-site/releases/download/v0.1.0/HockeyCut-0.1.21-mac-x64.app.tar.gz"
     }
   }
 }
